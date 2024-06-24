@@ -228,6 +228,17 @@ export class Services {
     return this.http.post(this.URL + '/' + entity + '/' + 'getByPage', obj, {headers});
   }
 
+  getFromEntityByFilter(entity: string, obj: any): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Headers' : 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*'
+    });
+
+    return this.http.post(this.URL + '/' + entity + '/' + 'getByFilter', obj, {headers});
+  }
+
   getFromEntityDetalleByPage(entity: string, obj: any): Observable<any> {
 
     const headers = new HttpHeaders({

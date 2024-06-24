@@ -247,6 +247,14 @@ export class FunctionsUtils {
     return 0;
   }
 
-
+  formatPrice(price: number): string {
+    if (price % 1 === 0) {
+      return price.toFixed(2);
+    }
+    if (price % 1 === 0.1) {
+      return price.toFixed(1) + '0';
+    }
+    return price.toFixed(2);
+  }
 
 }

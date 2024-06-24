@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="input-group">
+    <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda">
+    <div class="input-group-append">
+      <button cButton  color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
+        <svg cIcon name="cilZoom"></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<c-card class="my-5">
+  <c-card-body class="card-container">
+    <c-card class="card-item" *ngFor="let obj of listResponse">
+      <div class="justify-content-center d-flex">
+        <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
+      </div>
+      <div class="justify-content-center d-flex">
+        <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />
+      </div>
+      <c-card-body class="card-body-custom text-center">
+        <p cCardText>
+          {{obj.descripcion}}
+        </p>
+      </c-card-body>
+      <br>
+      <div class="justify-content-center d-flex" style="padding-bottom: 20px;">
+        <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.precio)}}</button>
+      </div>
+    </c-card>
+
+  </c-card-body>
+  <div class="d-flex justify-content-center" >
+    <div class="col-auto">
+      <ngb-pagination [(page)]="pagination.page"
+                      (pageChange)="changePage($event-1)"
+                      [maxSize]="pagination.maxSize"
+                      [pageSize]="pagination.pageSize"
+                      [collectionSize]="pagination.collectionSize"></ngb-pagination>
+    </div>
+  </div>
+</c-card>
+<app-custom-spinner></app-custom-spinner>
