@@ -33,16 +33,16 @@
 
 @media (min-width: 1351px) {
   .card-container {
-    grid-template-columns: repeat(auto-fill, minmax(24%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
   }
 
   .fixed-size-img {
-    width: 14vw;
+    width: 16vw;
     height: 27vh;
   }
 
   .ancho-personalizado {
-    width: 80%;
+    width: 82%;
   }
 }
 
@@ -65,11 +65,11 @@
 /* Dispositivos medianos (laptops, tablets en paisaje) */
 @media (max-width: 992px) {
   .card-container {
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
   }
   .fixed-size-img {
-    width: 20vw;
-    height: 27vh;
+    width: 23vw;
+    height: 26vh;
   }
 
   .ancho-personalizado {
@@ -98,12 +98,12 @@
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   }
   .fixed-size-img {
-    width: 50vw;
+    width: 48vw;
     height: 27vh;
   }
 
   .ancho-personalizado {
-    width: 90%;
+    width: 87%;
   }
 }
 
