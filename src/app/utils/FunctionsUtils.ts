@@ -164,7 +164,6 @@ export class FunctionsUtils {
 
   removeSpacesString(value: string, obj: any, cdr: ChangeDetectorRef): void {
     obj.valor = value.toString().trim();
-    console.log('value: ', obj.valor);
     cdr.detectChanges();
   }
 

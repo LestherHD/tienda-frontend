@@ -1,15 +1,16 @@
 <div class="d-flex justify-content-center">
   <div class="input-group">
-    <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda">
+    <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+           (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)">
     <div class="input-group-append">
-      <button cButton  color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
+      <button cButton  color="warning" (click)="filtrar()"  class="text-white btn-alto-ancho">
         <svg cIcon name="cilZoom"></svg>
       </button>
     </div>
   </div>
 </div>
-<c-card class="my-5">
-  <c-card-body class="card-container">
+<c-card class="my-5" *ngIf="listResponse && listResponse.length">
+  <c-card-body class="card-container" >
     <c-card class="card-item" *ngFor="let obj of listResponse">
       <div class="justify-content-center d-flex">
         <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
@@ -38,5 +39,11 @@
                       [collectionSize]="pagination.collectionSize"></ngb-pagination>
     </div>
   </div>
+</c-card>
+<c-card class="my-5 " *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
+  <c-card-body class="card-container col-12 d-flex flex-column justify-content-center align-items-center" >
+    <h4>No pudimos encontrar el producto que buscas</h4>
+    <p>Búsqueda realizada: <span style="font-weight: bold">{{valorBusquedaBK ? valorBusquedaBK.value : ''}}</span></p>
+  </c-card-body>
 </c-card>
 <app-custom-spinner></app-custom-spinner>
