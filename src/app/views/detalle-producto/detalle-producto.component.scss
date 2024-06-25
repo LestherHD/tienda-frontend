@@ -1,0 +1,69 @@
+.ancho-personalizado {
+  width: 50%;
+}
+
+.fixed-size-img {
+  width: 25vw;
+  height: 25vh;
+  border: 0.5px solid silver !important; /* Puedes cambiar el color y grosor del borde aquí */
+  border-radius: 5px;
+}
+
+@media (min-width: 1351px) {
+  .ancho-personalizado {
+    width: 65%;
+  }
+
+  .fixed-size-img {
+    width: 23vw;
+    height: 23vh;
+  }
+}
+
+/* Dispositivos grandes (desktops, laptops grandes) */
+@media (max-width: 1350px) {
+  .ancho-personalizado {
+    width: 65%;
+  }
+  .fixed-size-img {
+    width: 23vw;
+    height: 23vh;
+  }
+}
+
+/* Dispositivos medianos (laptops, tablets en paisaje) */
+@media (max-width: 992px) {
+  .ancho-personalizado {
+    width: 75%;
+  }
+
+  .fixed-size-img {
+    width: 25vw;
+    height: 23vh;
+  }
+}
+
+/* Dispositivos pequeños (tablets en retrato, smartphones grandes) */
+@media (max-width: 768px) {
+  .ancho-personalizado {
+    width: 80%;
+  }
+  .fixed-size-img {
+    width: 25vw;
+    height: 23vh;
+  }
+}
+
+/* Dispositivos extra pequeños (smartphones) */
+@media (max-width: 576px) {
+  .ancho-personalizado {
+    width: 90%;
+  }
+  .fixed-size-img {
+    width: 32vw;
+    height: 20vh;
+  }
+}
+
+
+

@@ -1,6 +1,6 @@
 import {FormGroup} from '@angular/forms';
 import {ChangeDetectorRef, Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Injectable({
@@ -177,8 +177,8 @@ export class FunctionsUtils {
 
   }
 
-  navigateOption(router: Router, opcion: string): void {
-    router.navigateByUrl(opcion);
+  navigateOption(router: Router, opcion: string, navigationExtras: NavigationExtras): void {
+    router.navigate([opcion], navigationExtras);
   }
 
   campoRequerido(form: FormGroup, name: string): number {

@@ -10,6 +10,7 @@ import {CommonModule} from '@angular/common';
 import {ButtonsComponent} from '../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {FunctionsUtils} from '../../utils/FunctionsUtils';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-productos',
@@ -27,7 +28,7 @@ export class DashboardProductosComponent implements OnInit{
   valorBusqueda: FormControl;
   valorBusquedaBK: FormControl;
 
-  constructor(private service: Services, public functionsUtils: FunctionsUtils) {
+  constructor(private service: Services, public functionsUtils: FunctionsUtils, private router: Router) {
     this.pagination = new NgbPagination();
     this.pagination.page = 0;
     this.pagination.pageSize = 30;
@@ -70,4 +71,10 @@ export class DashboardProductosComponent implements OnInit{
     });
   }
 
+  viajarADetalle(obj: Productos) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: { idProduct: obj.id}
+    };
+    this.functionsUtils.navigateOption(this.router, 'product-detail', navigationExtras);
+  }
 }

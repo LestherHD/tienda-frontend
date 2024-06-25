@@ -12,41 +12,25 @@
   </div>
   <c-card class="my-5 ancho-personalizado" *ngIf="listResponse && listResponse.length">
     <c-card-body class="card-container" >
-      <c-card class="card-item" *ngFor="let obj of listResponse">
-        <div class="justify-content-center d-flex">
-          <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
-        </div>
-        <div class="justify-content-center d-flex">
-          <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />
-        </div>
-        <c-card-body class="card-body-custom text-center">
-          <p cCardText>
-            {{obj.descripcion}}
-          </p>
-        </c-card-body>
-        <br>
-        <div class="justify-content-center d-flex" style="padding-bottom: 20px;">
-          <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.precio)}}</button>
-        </div>
-      </c-card>
-      <c-card class="card-item" *ngFor="let obj of listResponse">
-        <div class="justify-content-center d-flex">
-          <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
-        </div>
-        <div class="justify-content-center d-flex">
-          <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />
-        </div>
-        <c-card-body class="card-body-custom text-center">
-          <p cCardText>
-            {{obj.descripcion}}
-          </p>
-        </c-card-body>
-        <br>
-        <div class="justify-content-center d-flex" style="padding-bottom: 20px;">
-          <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.precio)}}</button>
+      <c-card class="card-item" *ngFor="let obj of listResponse" >
+        <div (click)="viajarADetalle(obj)">
+          <div class="justify-content-center d-flex">
+            <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
+          </div>
+          <div class="justify-content-center d-flex">
+            <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />
+          </div>
+          <c-card-body class="card-body-custom text-center">
+            <p cCardText>
+              {{obj.descripcion}}
+            </p>
+          </c-card-body>
+          <br>
+          <div class="justify-content-center d-flex" style="padding-bottom: 20px;">
+            <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.precio)}}</button>
+          </div>
         </div>
       </c-card>
-
     </c-card-body>
     <div class="d-flex justify-content-center" >
       <div class="col-auto">
@@ -59,7 +43,7 @@
     </div>
   </c-card>
   <c-card class="my-5 ancho-personalizado" *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
-    <c-card-body class="card-container col-12 d-flex flex-column justify-content-center align-items-center" >
+    <c-card-body class="d-flex justify-content-center flex-column align-items-center align-content-center" >
       <h4>No pudimos encontrar el producto que buscas</h4>
       <p>Búsqueda realizada: <span style="font-weight: bold">{{valorBusquedaBK ? valorBusquedaBK.value : ''}}</span></p>
     </c-card-body>
