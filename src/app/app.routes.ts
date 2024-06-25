@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
+import {DashboardProductosComponent} from './views/dashboard-productos/dashboard-productos.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: DashboardProductosComponent,
     data: {
       title: 'Home'
     },
@@ -84,5 +85,5 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: '' }
 ];
