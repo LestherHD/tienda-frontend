@@ -10,15 +10,51 @@
             <h5 class="mb-2 text-center">
               <span class="justify-text fw-bold card-title-custom">{{producto.nombre}}</span>
             </h5>
-            <p class="mb-0 text-center">
+            <p class="mb-0 text-center ">
               <span class="justify-text card-description-custom">{{producto.descripcion}}</span>
             </p>
+            <div class="col-auto mt-3">
+              <label class="card-description-custom fw-semibold m-1">Cantidad: </label>
+              <div >
+                <select class="form-select m-1" >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+            </div>
+            <div *ngIf="producto && producto.caracteristicas && producto.caracteristicas.length > 0">
+              <div *ngFor="let obj of filtrarCaracteristicasAsociadas()">
+                <div class="col-auto mt-3">
+                  <label class="card-description-custom fw-semibold m-1">{{obj.nombre}}: </label>
+                  <div class="col-md-auto">
+                    <select class="form-select m-1" >
+                      <option value="valor" *ngFor="let valor of getValoresPorIdCaracteristica(obj.id)">{{valor}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-6 d-flex justify-content-center">
-            <img cCardImg="top" [src]="producto.imagen" class="fixed-size-img border border-dark" />
+            <img cCardImg="top" [src]="producto.imagen" class="fixed-size-img" />
           </div>
         </div>
+      </div>
+      <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
+        <c-alert *ngIf="agregado" color="success">Se agregó al carrito de compras</c-alert>
+        <button *ngIf="!agregado" (click)="agregarACarrito()" cButton color="primary">
+          <svg cIcon class="me-2" size="lg" name="cilCart"></svg>
+          Añadir a carrito
+        </button>
       </div>
     </c-card-body>
   </c-card>
