@@ -10,7 +10,16 @@
 }
 
 .card-item{
+  border-color: rgba(0, 0, 0, 0.1);
   max-height: 450px;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.001s ease;
+}
+
+.card-item:hover {
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0px);
+  cursor: pointer;
 }
 
 .card-body-custom{
@@ -37,8 +46,8 @@
   }
 
   .fixed-size-img {
-    width: 16vw;
-    height: 27vh;
+    width: 12vw;
+    height: 20vh;
   }
 
   .ancho-personalizado {
@@ -52,8 +61,8 @@
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   }
   .fixed-size-img {
-    width: 18vw;
-    height: 27vh;
+    width: 13vw;
+    height: 19vh;
   }
 
   .ancho-personalizado {
@@ -68,8 +77,8 @@
     grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
   }
   .fixed-size-img {
-    width: 23vw;
-    height: 26vh;
+    width: 17vw;
+    height: 17vh;
   }
 
   .ancho-personalizado {
@@ -83,8 +92,8 @@
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
   }
   .fixed-size-img {
-    width: 32vw;
-    height: 27vh;
+    width: 24vw;
+    height: 19vh;
   }
 
   .ancho-personalizado {
@@ -93,13 +102,13 @@
 }
 
 /* Dispositivos extra pequeños (smartphones) */
-@media (max-width: 576px) {
+  @media (max-width: 576px) {
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   }
   .fixed-size-img {
-    width: 48vw;
-    height: 27vh;
+    width: 35vw;
+    height: 15vh;
   }
 
   .ancho-personalizado {

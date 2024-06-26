@@ -9,25 +9,35 @@
   border-radius: 5px;
 }
 
+.justify-text {
+  text-align: justify;
+  display: inline-block; /* Para que el texto esté justificado y centrado */
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
 @media (min-width: 1351px) {
   .ancho-personalizado {
-    width: 65%;
+    width: 50%;
   }
 
   .fixed-size-img {
     width: 23vw;
-    height: 23vh;
+    height: 30vh;
   }
 }
 
 /* Dispositivos grandes (desktops, laptops grandes) */
 @media (max-width: 1350px) {
   .ancho-personalizado {
-    width: 65%;
+    width: 55%;
   }
   .fixed-size-img {
-    width: 23vw;
-    height: 23vh;
+    width: 26vw;
+    height: 29vh;
   }
 }
 
@@ -38,8 +48,8 @@
   }
 
   .fixed-size-img {
-    width: 25vw;
-    height: 23vh;
+    width: 30vw;
+    height: 28vh;
   }
 }
 
@@ -49,8 +59,8 @@
     width: 80%;
   }
   .fixed-size-img {
-    width: 25vw;
-    height: 23vh;
+    width: 32vw;
+    height: 28vh;
   }
 }
 
@@ -60,8 +70,8 @@
     width: 90%;
   }
   .fixed-size-img {
-    width: 32vw;
-    height: 20vh;
+    width: 38vw;
+    height: 26vh;
   }
 }
 
