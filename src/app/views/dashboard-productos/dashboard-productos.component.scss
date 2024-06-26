@@ -23,8 +23,7 @@
 }
 
 .card-body-custom{
-  max-height: 100px;
-  overflow-y: scroll;
+  height: 100px;
 }
 
 .input-alto {
@@ -40,6 +39,10 @@
   width: 90%;
 }
 
+.ancho-personalizado-busqueda{
+  width: 90%;
+}
+
 @media (min-width: 1351px) {
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
@@ -51,7 +54,24 @@
   }
 
   .ancho-personalizado {
-    width: 82%;
+    width: 70%;
+  }
+
+  .ancho-personalizado-busqueda{
+    width: 75%;
+  }
+
+  .card-body-custom p{
+    font-size: 12px;
+    max-width: 17vw;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .card-title-custom{
+    font-size: 13px;
   }
 }
 
@@ -66,7 +86,24 @@
   }
 
   .ancho-personalizado {
+    width: 80%;
+  }
+
+  .ancho-personalizado-busqueda{
     width: 86%;
+  }
+
+  .card-body-custom p{
+    font-size: 11px;
+    max-width: 22vw;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .card-title-custom{
+    font-size: 12px;
   }
 
 }
@@ -82,7 +119,24 @@
   }
 
   .ancho-personalizado {
+    width: 90%;
+  }
+
+  .ancho-personalizado-busqueda{
     width: 92%;
+  }
+
+  .card-body-custom p{
+    font-size: 11px;
+    max-width: 21vw;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .card-title-custom{
+    font-size: 12px;
   }
 }
 
@@ -95,14 +149,29 @@
     width: 24vw;
     height: 19vh;
   }
-
   .ancho-personalizado {
     width: 90%;
+  }
+  .ancho-personalizado-busqueda{
+    width: 90%;
+  }
+
+  .card-body-custom p{
+    font-size: 11px;
+    max-width: 34vw;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .card-title-custom{
+    font-size: 12px;
   }
 }
 
 /* Dispositivos extra pequeños (smartphones) */
-  @media (max-width: 576px) {
+@media (max-width: 576px) {
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   }
@@ -112,8 +181,26 @@
   }
 
   .ancho-personalizado {
+    width: 60%;
+  }
+
+  .ancho-personalizado-busqueda{
     width: 87%;
   }
+
+  .card-body-custom p{
+    font-size: 11px;
+    max-width: 40vw;
+    height: 100px;
+    overflow-y: scroll;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .card-title-custom{
+    font-size: 12px;
+  }
+
 }
 
 

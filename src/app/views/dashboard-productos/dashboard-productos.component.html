@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
-  <div class="mt-5 ancho-personalizado">
+  <div class="mt-5 ancho-personalizado-busqueda">
     <div class="input-group">
       <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
              (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)">
@@ -15,7 +15,7 @@
       <c-card class="card-item" *ngFor="let obj of listResponse" >
         <div (click)="viajarADetalle(obj)">
           <div class="justify-content-center d-flex">
-            <h6 cCardTitle class="fw-bold m-2">{{obj.nombre}}</h6>
+            <span cCardTitle class="fw-bold m-2 card-title-custom">{{obj.nombre}}</span>
           </div>
           <div class="justify-content-center d-flex">
             <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />

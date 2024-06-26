@@ -28,6 +28,16 @@
     width: 23vw;
     height: 30vh;
   }
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 25px;
+  }
+  .card-title-custom{
+    font-size: 17px;
+  }
+  .card-description-custom{
+    font-size: 16px;
+  }
 }
 
 /* Dispositivos grandes (desktops, laptops grandes) */
@@ -39,6 +49,16 @@
     width: 26vw;
     height: 29vh;
   }
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 25px;
+  }
+  .card-title-custom{
+    font-size: 17px;
+  }
+  .card-description-custom{
+    font-size: 16px;
+  }
 }
 
 /* Dispositivos medianos (laptops, tablets en paisaje) */
@@ -46,10 +66,19 @@
   .ancho-personalizado {
     width: 75%;
   }
-
   .fixed-size-img {
     width: 30vw;
     height: 28vh;
+  }
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 24px;
+  }
+  .card-title-custom{
+    font-size: 16px;
+  }
+  .card-description-custom{
+    font-size: 15px;
   }
 }
 
@@ -62,6 +91,16 @@
     width: 32vw;
     height: 28vh;
   }
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 22px;
+  }
+  .card-title-custom{
+    font-size: 14px;
+  }
+  .card-description-custom{
+    font-size: 13px;
+  }
 }
 
 /* Dispositivos extra pequeños (smartphones) */
@@ -72,6 +111,16 @@
   .fixed-size-img {
     width: 38vw;
     height: 26vh;
+  }
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 23px;
+  }
+  .card-title-custom{
+    font-size: 15px;
+  }
+  .card-description-custom{
+    font-size: 14px;
   }
 }
 

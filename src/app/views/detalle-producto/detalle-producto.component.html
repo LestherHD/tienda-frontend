@@ -1,17 +1,17 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
   <c-card class="my-5 ancho-personalizado" *ngIf="producto">
     <div class="d-flex justify-content-center mt-3">
-      <h2 style="color: rgba(0, 0, 0, 0.6);">Detalle</h2>
+      <span class="tittle">Detalle</span>
     </div>
     <c-card-body>
       <div class="container mt-2">
         <div class="row">
           <div class="col-md-5">
-            <h5 class="mb-2 text-center"> <!-- centrar título -->
-              <span class="justify-text fw-bold">{{producto.nombre}}</span>
+            <h5 class="mb-2 text-center">
+              <span class="justify-text fw-bold card-title-custom">{{producto.nombre}}</span>
             </h5>
-            <p class="mb-0 text-center"> <!-- centrar descripción -->
-              <span class="justify-text">{{producto.descripcion}}</span>
+            <p class="mb-0 text-center">
+              <span class="justify-text card-description-custom">{{producto.descripcion}}</span>
             </p>
           </div>
           <div class="col-md-1"></div>
