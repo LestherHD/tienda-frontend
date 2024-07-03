@@ -1,3 +1,13 @@
 <div class="header">
-
+  <div class="mt-5 ancho-personalizado-busqueda">
+    <div class="input-group">
+      <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+             (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
+      <div class="input-group-append">
+        <button cButton  color="warning" (click)="filtrar()"  class="text-white btn-alto-ancho">
+          <svg cIcon name="cilZoom"></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

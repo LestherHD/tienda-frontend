@@ -36,6 +36,12 @@ export class DashboardProductosComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
+    this.service.search$.subscribe(value => {
+      this.valorBusqueda = value;
+      this.filtrar();
+    });
+
     this.valorBusqueda = new FormControl('', Validators.required);
     this.getValuesByPage('', this.pagination.page, this.pagination.pageSize);
   }

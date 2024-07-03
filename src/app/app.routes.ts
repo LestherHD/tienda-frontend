@@ -4,33 +4,14 @@ import {MainComponent} from './views/main/main.component';
 export const routes: Routes = [
   {
     path: '',
-    component: MainComponent,
-    children: [
-      {
-        path: '',
-        // component: DetallePedido,
-        loadChildren: () => import('./views/main/routes').then((m) => m.routes)
-      },
-    ]
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
   },
-
-  // {
-  //   path: '',
-  //   component: DashboardProductosComponent,
-  //   data: {
-  //     title: 'Home'
-  //   },
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () => import('./views/dashboard-productos/routes').then((m) => m.routes)
-  //     },
-  //     {
-  //       path: 'product-detail',
-  //       loadChildren: () => import('./views/detalle-producto/routes').then((m) => m.routes)
-  //     }
-  //   ]
-  // },
+  {
+    path: '',
+    component: MainComponent,
+    loadChildren: () => import('./views/main/routes').then(m => m.routes)
+  },
   {
     path: '404',
     loadComponent: () => import('./views/pages/page404/page404.component').then(m => m.Page404Component),
@@ -59,5 +40,5 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', redirectTo: '404' }
 ];

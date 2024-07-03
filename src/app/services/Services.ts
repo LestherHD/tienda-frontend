@@ -1,8 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UrlField} from '../bo/UrlField';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import * as CryptoJS from 'crypto-js';
+import {FormControl} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,20 @@ export class Services {
   public eventEmitter: EventEmitter<void> = new EventEmitter();
   public mostrarSpinner: Boolean;
   public deshabilitarBotones: Boolean;
+
+  private searchSubject = new BehaviorSubject<FormControl>(new FormControl());
+  search$ = this.searchSubject.asObservable();
   // demo heroku
   // URL = 'https://panaderia-backend.herokuapp.com';
 
   constructor(private http: HttpClient) {
 
+  }
+
+
+
+  setSearchValue(value: FormControl) {
+    this.searchSubject.next(value);
   }
 
   clicInformacionUsuario() {

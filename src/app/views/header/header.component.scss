@@ -3,3 +3,54 @@
   height: 13vh !important;
   width: 100%;
 }
+
+.btn-alto-ancho{
+  height: 5vh;
+  width: 50px;
+}
+
+.input-alto {
+  height: 5vh; /* Altura deseada */
+}
+
+.ancho-personalizado-busqueda{
+  margin: 0 auto;
+  width: 60%;
+  height: 13vh;
+}
+
+@media (min-width: 1351px) {
+  .ancho-personalizado-busqueda{
+    width: 60%;
+  }
+}
+
+/* Dispositivos grandes (desktops, laptops grandes) */
+@media (max-width: 1350px) {
+  .ancho-personalizado-busqueda{
+    width: 86%;
+  }
+}
+
+/* Dispositivos medianos (laptops, tablets en paisaje) */
+@media (max-width: 992px) {
+
+  .ancho-personalizado-busqueda{
+    width: 92%;
+  }
+
+}
+
+/* Dispositivos pequeños (tablets en retrato, smartphones grandes) */
+@media (max-width: 768px) {
+  .ancho-personalizado-busqueda{
+    width: 90%;
+  }
+}
+
+/* Dispositivos extra pequeños (smartphones) */
+@media (max-width: 576px) {
+  .ancho-personalizado-busqueda{
+    width: 87%;
+  }
+}
