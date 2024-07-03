@@ -1,13 +1,27 @@
 <div class="header">
-  <div class="mt-5 ancho-personalizado-busqueda">
+  <div class="logo">
+    <img src="/assets/images/logo.png" class="logo-img">
+  </div>
+  <div class="ancho-personalizado-busqueda">
+    <div class="button-group">
+      <button class="btn btn-primary">Button 1</button>
+      <button class="btn btn-secondary">Button 2</button>
+      <button class="btn btn-success">Button 3</button>
+    </div>
     <div class="input-group">
       <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
              (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
       <div class="input-group-append">
-        <button cButton  color="warning" (click)="filtrar()"  class="text-white btn-alto-ancho">
+        <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
           <svg cIcon name="cilZoom"></svg>
         </button>
       </div>
     </div>
   </div>
+  <div class="shopping-cart">
+    <button cButton color="danger" class="text-white btn-alto-ancho border-0" size="lg" variant="outline">
+      <svg cIcon name="cilCart"></svg>
+    </button>
+  </div>
 </div>
+

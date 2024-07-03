@@ -19,6 +19,51 @@
   height: 13vh;
 }
 
+
+
+.logo {
+  margin-right: 20px;
+}
+
+.logo-img {
+  height: 6vh;
+  width: 13vw;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-append {
+  display: flex;
+  align-items: center;
+}
+
+.shopping-cart {
+  height: 6vh;
+  width: 4vw;
+  margin-right: 50px;
+}
+
+.shopping-cart button {
+  height: 6vh;
+  width: 4vw;
+  margin-right: 50px;
+}
+
+.shopping-cart svg {
+  height: 3vh;
+  width: 2vw;
+}
+
+
 @media (min-width: 1351px) {
   .ancho-personalizado-busqueda{
     width: 60%;
@@ -61,3 +106,4 @@
     height: 20vh !important;
   }
 }
+
