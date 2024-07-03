@@ -32,16 +32,16 @@
         </div>
       </c-card>
     </c-card-body>
-    <div class="d-flex justify-content-center" >
-      <div class="col-auto">
-        <ngb-pagination [(page)]="pagination.page"
-                        (pageChange)="changePage($event-1)"
-                        [maxSize]="pagination.maxSize"
-                        [pageSize]="pagination.pageSize"
-                        [collectionSize]="pagination.collectionSize"></ngb-pagination>
-      </div>
-    </div>
   </c-card>
+  <div class="d-flex justify-content-center" >
+    <div class="col-auto">
+      <ngb-pagination [(page)]="pagination.page"
+                      (pageChange)="changePage($event-1)"
+                      [maxSize]="pagination.maxSize"
+                      [pageSize]="pagination.pageSize"
+                      [collectionSize]="pagination.collectionSize"></ngb-pagination>
+    </div>
+  </div>
   <c-card class="my-5 ancho-personalizado" *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
     <c-card-body class="d-flex justify-content-center flex-column align-items-center align-content-center" >
       <h4>No pudimos encontrar el producto que buscas</h4>
