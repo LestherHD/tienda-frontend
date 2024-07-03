@@ -3,7 +3,7 @@ import {AlertComponent, ButtonDirective, CardBodyComponent, CardComponent, FormC
 import {CustomSpinnerComponent} from '../utils/custom-spinner/custom-spinner.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonsComponent} from '../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {Services} from '../../services/Services';
@@ -28,6 +28,8 @@ export class DetalleProductoComponent implements OnInit{
   idProduct: any;
   listaCaracteristicas: Caracteristicas[];
   agregado: boolean;
+  mapaProductos: Record<number, DetalleProducto> = {};
+  cantidad: FormControl;
 
   constructor(private service: Services, functionUtils: FunctionsUtils,
               private route: ActivatedRoute) {
@@ -35,15 +37,20 @@ export class DetalleProductoComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    // localStorage.removeItem('mapaProductos');
+
     this.route.queryParams.subscribe( paramMap => {
       this.idProduct = paramMap['idProduct'];
     });
 
     this.cargarDatos();
+    this.cargarMapaDesdeLocalStorage();
+    console.log(this.mapaProductos);
   }
 
   cargarDatos(){
-
+    this.producto = null;
+    this.cantidad = new FormControl('1', Validators.required);
     this.service.getAllItemsFromEntity('caracteristicas').subscribe( (res: Caracteristicas[])=>{
       this.listaCaracteristicas = res;
     }, error => {
@@ -56,7 +63,6 @@ export class DetalleProductoComponent implements OnInit{
     this.service.getFromEntityAndMethod('productos', 'getById', requestDTO).subscribe((res: Productos) =>{
       this.producto = res;
       this.producto.imagen = 'data:image/jpeg;base64,'+this.producto.imagen;
-      console.log(this.producto);
     }, errors =>{
       console.error(errors);
     });
@@ -78,8 +84,33 @@ export class DetalleProductoComponent implements OnInit{
   }
 
 
-  agregarACarrito() {
+  agregarACarrito(): void {
     this.agregado = true;
-    // localStorage.setItem('usuario', JSON.stringify(usuario));
+    if (this.mapaProductos[this.producto.id]) {
+      this.mapaProductos[this.producto.id].cantidad += Number(this.cantidad.value);
+    } else {
+      this.mapaProductos[this.producto.id] = {
+        detalles: this.producto,
+        cantidad: Number(this.cantidad.value)
+      };
+    }
+    this.guardarMapaEnLocalStorage();
   }
+
+  guardarMapaEnLocalStorage(): void {
+    localStorage.setItem('mapaProductos', JSON.stringify(this.mapaProductos));
+  }
+
+  cargarMapaDesdeLocalStorage(): void {
+    const data = localStorage.getItem('mapaProductos');
+    if (data) {
+      this.mapaProductos = JSON.parse(data);
+    }
+  }
+
+}
+
+interface DetalleProducto {
+  detalles: Productos;
+  cantidad: number;
 }

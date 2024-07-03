@@ -14,9 +14,9 @@
               <span class="justify-text card-description-custom">{{producto.descripcion}}</span>
             </p>
             <div class="col-auto mt-3">
-              <label class="card-description-custom fw-semibold m-1">Cantidad: </label>
+              <label class="card-description-custom fw-semibold m-1" >Cantidad: </label>
               <div >
-                <select class="form-select m-1" >
+                <select class="form-select m-1" [formControl]="cantidad">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
