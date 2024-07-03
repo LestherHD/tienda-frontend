@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ButtonDirective, CardBodyComponent, CardComponent, FormControlDirective} from '@coreui/angular';
-import {Services} from '../../services/Services';
-import {Productos} from '../../bo/Productos';
+import {Services} from '../../../services/Services';
+import {Productos} from '../../../bo/Productos';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgbPagination, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import {ProductosRequestDTO} from '../../dto/ProductosRequestDTO';
-import {CustomSpinnerComponent} from '../utils/custom-spinner/custom-spinner.component';
+import {ProductosRequestDTO} from '../../../dto/ProductosRequestDTO';
+import {CustomSpinnerComponent} from '../../utils/custom-spinner/custom-spinner.component';
 import {CommonModule} from '@angular/common';
-import {ButtonsComponent} from '../buttons/buttons/buttons.component';
+import {ButtonsComponent} from '../../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
-import {FunctionsUtils} from '../../utils/FunctionsUtils';
+import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {NavigationExtras, Router} from '@angular/router';
 
 @Component({

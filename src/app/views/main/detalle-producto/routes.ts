@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'product-detail',
     loadComponent: () => import('./detalle-producto.component').then(m => m.DetalleProductoComponent),
     data: {
-      title: $localize`Detalle producto`
+      title: 'Sucursales'
     }
   }
 ];

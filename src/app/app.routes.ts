@@ -1,20 +1,19 @@
-import { Routes } from '@angular/router';
-import { DefaultLayoutComponent } from './layout';
-import {DashboardProductosComponent} from './views/dashboard-productos/dashboard-productos.component';
+import {Routes} from '@angular/router';
+import {MainComponent} from './views/main/main.component';
 
 export const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: DashboardProductosComponent,
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        // component: DetallePedido,
+        loadChildren: () => import('./views/main/routes').then((m) => m.routes)
+      },
+    ]
   },
-  {
-    path: 'product-detail',
-    loadComponent: () => import('./views/detalle-producto/detalle-producto.component').then(m => m.DetalleProductoComponent),
-    data: {
-      title: 'Page 404'
-    }
-  },
+
   // {
   //   path: '',
   //   component: DashboardProductosComponent,
@@ -60,5 +59,5 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'dashboard' }
 ];

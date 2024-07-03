@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertComponent, ButtonDirective, CardBodyComponent, CardComponent, FormControlDirective} from '@coreui/angular';
-import {CustomSpinnerComponent} from '../utils/custom-spinner/custom-spinner.component';
+import {CustomSpinnerComponent} from '../../utils/custom-spinner/custom-spinner.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule} from '@angular/common';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ButtonsComponent} from '../buttons/buttons/buttons.component';
+import {ButtonsComponent} from '../../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
-import {Services} from '../../services/Services';
-import {FunctionsUtils} from '../../utils/FunctionsUtils';
-import {Productos} from '../../bo/Productos';
+import {Services} from '../../../services/Services';
+import {FunctionsUtils} from '../../../utils/FunctionsUtils';
+import {Productos} from '../../../bo/Productos';
 import {ActivatedRoute} from '@angular/router';
-import {ProductosRequestDTO} from '../../dto/ProductosRequestDTO';
-import {Caracteristicas} from '../../bo/Caracteristicas';
+import {ProductosRequestDTO} from '../../../dto/ProductosRequestDTO';
+import {Caracteristicas} from '../../../bo/Caracteristicas';
 
 @Component({
   selector: 'app-detalle-producto',
