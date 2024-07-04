@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="input-group input-group-custom">
-        <input class="form-control input-personalizado" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+        <input class="form-control input-personalizado" placeholder="Buscar..." [formControl]="valorBusqueda"
                (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
         <div class="input-group-append">
           <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
@@ -26,8 +26,9 @@
       </div>
     </div>
     <div class="shopping-cart">
-      <button cButton color="danger" class="text-white btn-alto-ancho border-0" size="lg" variant="outline">
+      <button color="dark" variant="outline" class="text-white btn-alto-ancho border-0 position-relative mx-2 btn" variant="outline">
         <svg cIcon name="cilCart"></svg>
+        <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
       </button>
     </div>
   </div>
@@ -50,15 +51,17 @@
           <button class="border-0 text-white btn" >Tipos de producto</button>
           <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
         </div>
-        <div class="shopping-cart">
-          <button  class="text-white btn-alto-ancho border-0 btn">
+        <div class="shopping-cart button-container">
+          <button color="dark" class="text-white border-0 position-relative mx-2 btn">
             <svg cIcon name="cilCart"></svg>
+            <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
           </button>
         </div>
+
       </div>
 
       <div class="input-group input-group-custom">
-        <input class="form-control input-personalizado" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+        <input class="form-control input-personalizado"  placeholder="Buscar..." [formControl]="valorBusqueda"
                (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
         <div class="input-group-append">
           <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">

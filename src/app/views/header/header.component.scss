@@ -73,6 +73,7 @@
 }
 
 .shopping-cart {
+  position: relative;
   height: 6vh;
   width: 4vw;
   margin-right: 30px;
@@ -89,7 +90,6 @@
   height: 3vh;
   width: 2vw;
 }
-
 
 @media (min-width: 1351px) {
 
@@ -149,21 +149,21 @@
   }
 
   .shopping-cart {
-    height: 6vh;
-    width: 4vw;
-    margin-right: 30px;
     margin-top: 60px;
+    height: 5vh;
+    width: auto;
+    align-content: center;
   }
 
   .shopping-cart button {
-    height: 6vh;
+    height: 5vh;
     width: 4vw;
-    margin-right: 50px;
+
   }
 
   .shopping-cart svg {
     height: 3vh;
-    width: 2vw;
+    width: 3vw;
   }
 
 
@@ -230,21 +230,21 @@
   }
 
   .shopping-cart {
-    height: 6vh;
-    width: 4vw;
-    margin-right: 30px;
     margin-top: 60px;
+    height: 5vh;
+    width: auto;
+    align-content: center;
   }
 
   .shopping-cart button {
-    height: 6vh;
-    width: 4vw;
-    margin-right: 50px;
+    height: 4vh;
+    width: 6vw;
+
   }
 
   .shopping-cart svg {
     height: 3vh;
-    width: 2vw;
+    width: 3vw;
   }
 }
 
@@ -269,12 +269,12 @@
   }
 
   .input-group-custom{
-    width: 90%;
+    width: 100%;
   }
 
   .ancho-personalizado-busqueda{
     margin: 0 auto;
-    width: 65%;
+    width: 55%;
     height: 13vh;
   }
 
@@ -282,12 +282,12 @@
     margin-left: 1vw;
     margin-top: 50px;
     height: 7vh;
-    width: 16.4vw;
+    width: 20vw;
   }
 
   .logo-img {
     height: 5vh;
-    width: 15vw;
+    width: 18.5vw;
   }
 
   .button-group {
@@ -309,21 +309,21 @@
   }
 
   .shopping-cart {
-    height: 6vh;
-    width: 4vw;
-    margin-right: 30px;
     margin-top: 60px;
+    height: 5vh;
+    width: auto;
+    align-content: center;
   }
 
   .shopping-cart button {
-    height: 6vh;
-    width: 4vw;
-    margin-right: 50px;
+    height: 4vh;
+    width: 6vw;
+
   }
 
   .shopping-cart svg {
     height: 3vh;
-    width: 2vw;
+    width: 3vw;
   }
 
 }
@@ -394,19 +394,21 @@
   }
 
   .shopping-cart {
-    margin-top: -5px;
-    height: 6vh;
-    width: 4vw;
+    margin-top: 0px;
+    margin-left: -15px;
+    height: 5vh;
+    width: auto;
+    align-content: center;
   }
 
   .shopping-cart button {
-    height: 6vh;
-    width: 8vw;
+    height: 5vh;
+    width: 7vw;
   }
 
   .shopping-cart svg {
-    height: 4vh;
-    width: 3vw;
+    height: 3.5vh;
+    width: 4vw;
   }
 }
 
@@ -476,19 +478,21 @@
   }
 
   .shopping-cart {
-    margin-top: -10px;
-    height: 7vh;
-    width: 8vw;
+    margin-top: 0px;
+    margin-left: -15px;
+    height: 5vh;
+    width: auto;
+    align-content: center;
   }
 
   .shopping-cart button {
-    height: 7vh;
-    width: 8vw;
+    height: 5vh;
+    width: 7vw;
   }
 
   .shopping-cart svg {
-    height: 5vh;
-    width: 4.5vw;
+    height: 3.5vh;
+    width: 4vw;
   }
 
 }

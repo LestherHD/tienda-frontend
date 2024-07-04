@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FunctionsUtils} from '../../utils/FunctionsUtils';
 import {CommonModule} from '@angular/common';
-import {ButtonDirective, FormControlDirective} from '@coreui/angular';
+import {BadgeComponent, ButtonDirective, FormControlDirective} from '@coreui/angular';
 import {ButtonsComponent} from '../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {Services} from '../../services/Services';
@@ -12,7 +12,7 @@ import {NavigationExtras, Router} from '@angular/router';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, FormControlDirective, ReactiveFormsModule,
-    ButtonDirective, ButtonsComponent, IconComponent, IconDirective],
+    ButtonDirective, ButtonsComponent, IconComponent, IconDirective, BadgeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
