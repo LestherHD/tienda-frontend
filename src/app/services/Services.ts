@@ -18,6 +18,7 @@ export class Services {
   public mostrarSpinner: Boolean;
   public deshabilitarBotones: Boolean;
   public activeButtonHeader: string = '';
+  public cantidadProductosCarrito: number = 0;
 
   private searchSubject = new BehaviorSubject<FormControl>(new FormControl());
   search$ = this.searchSubject.asObservable();

@@ -28,7 +28,7 @@
     <div class="shopping-cart">
       <button color="dark" variant="outline" class="text-white btn-alto-ancho border-0 position-relative mx-2 btn" variant="outline">
         <svg cIcon name="cilCart"></svg>
-        <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
+        <c-badge *ngIf="this.services.cantidadProductosCarrito > 0" color="danger" position="top-end" shape="rounded-pill">{{this.services.cantidadProductosCarrito}}</c-badge>
       </button>
     </div>
   </div>
@@ -54,7 +54,7 @@
         <div class="shopping-cart button-container">
           <button color="dark" class="text-white border-0 position-relative mx-2 btn">
             <svg cIcon name="cilCart"></svg>
-            <c-badge color="danger" position="top-end" shape="rounded-pill">99+</c-badge>
+            <c-badge *ngIf="this.services.cantidadProductosCarrito > 0" color="danger" position="top-end" shape="rounded-pill">{{this.services.cantidadProductosCarrito}}</c-badge>
           </button>
         </div>
 

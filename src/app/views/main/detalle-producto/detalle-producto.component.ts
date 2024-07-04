@@ -32,7 +32,7 @@ export class DetalleProductoComponent implements OnInit{
   mapaProductos: Record<number, DetalleProducto> = {};
   cantidad: FormControl;
 
-  constructor(private service: Services, functionUtils: FunctionsUtils,
+  constructor(public service: Services, functionUtils: FunctionsUtils,
               private route: ActivatedRoute, private titleService: Title) {
     this.agregado = false;
   }
@@ -46,7 +46,6 @@ export class DetalleProductoComponent implements OnInit{
 
     this.cargarDatos();
     this.cargarMapaDesdeLocalStorage();
-    console.log(this.mapaProductos);
   }
 
   cargarDatos(){
@@ -101,12 +100,16 @@ export class DetalleProductoComponent implements OnInit{
 
   guardarMapaEnLocalStorage(): void {
     localStorage.setItem('mapaProductos', JSON.stringify(this.mapaProductos));
+    this.cargarMapaDesdeLocalStorage();
   }
 
   cargarMapaDesdeLocalStorage(): void {
     const data = localStorage.getItem('mapaProductos');
     if (data) {
       this.mapaProductos = JSON.parse(data);
+      console.log('this.mapaProductos: ', this.mapaProductos);
+      const numeroDeProductos = Object.keys(this.mapaProductos).length;
+      this.service.cantidadProductosCarrito = numeroDeProductos;
     }
   }
 
