@@ -1,7 +1,16 @@
 .header{
   background: rgb(239, 75, 110);
-  height: 13vh !important;
-  width: 100%;
+  height: 16vh !important;
+  overflow-x: hidden;
+  //width: 100vw;
+}
+
+.headerGrande{
+  display: inline;
+}
+
+.headerPequenio{
+  display: inline;
 }
 
 .btn-alto-ancho{
@@ -9,8 +18,12 @@
   width: 50px;
 }
 
-.input-alto {
+.input-personalizado {
   height: 5vh; /* Altura deseada */
+}
+
+.input-group-custom{
+  width: 90%;
 }
 
 .ancho-personalizado-busqueda{
@@ -19,10 +32,9 @@
   height: 13vh;
 }
 
-
-
 .logo {
-  margin-right: 20px;
+  margin-left: 2vw;
+  margin-top: 50px;
 }
 
 .logo-img {
@@ -33,7 +45,15 @@
 .button-group {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  margin-right: 10vw;
+  margin-top: 10px;
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: white; /* Cambia el color según tus necesidades */
 }
 
 .input-group {
@@ -49,7 +69,8 @@
 .shopping-cart {
   height: 6vh;
   width: 4vw;
-  margin-right: 50px;
+  margin-right: 30px;
+  margin-top: 60px;
 }
 
 .shopping-cart button {
@@ -65,45 +86,398 @@
 
 
 @media (min-width: 1351px) {
-  .ancho-personalizado-busqueda{
-    width: 60%;
+
+  .headerGrande{
+    display: inline;
   }
+
+  .headerPequenio{
+    display: none;
+  }
+
+  .btn-alto-ancho{
+    height: 5vh;
+    width: 50px;
+  }
+
+  .input-personalizado {
+    height: 5vh; /* Altura deseada */
+  }
+
+  .input-group-custom{
+    width: 90%;
+  }
+
+  .ancho-personalizado-busqueda{
+    margin: 0 auto;
+    width: 60%;
+    height: 13vh;
+  }
+
+  .logo {
+    margin-left: 2vw;
+    margin-top: 50px;
+  }
+
+  .logo-img {
+    height: 6vh;
+    width: 13vw;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-right: 10vw;
+    margin-top: 10px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-append {
+    display: flex;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 30px;
+    margin-top: 60px;
+  }
+
+  .shopping-cart button {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 50px;
+  }
+
+  .shopping-cart svg {
+    height: 3vh;
+    width: 2vw;
+  }
+
+
 }
 
 /* Dispositivos grandes (desktops, laptops grandes) */
 @media (max-width: 1350px) {
+
+  .headerGrande{
+    display: inline;
+  }
+
+  .headerPequenio{
+    display: none;
+  }
+
+  .btn-alto-ancho{
+    height: 5vh;
+    width: 50px;
+  }
+
+  .input-personalizado {
+    height: 5vh; /* Altura deseada */
+  }
+
+  .input-group-custom{
+    width: 90%;
+  }
+
   .ancho-personalizado-busqueda{
+    margin: 0 auto;
     width: 65%;
+    height: 13vh;
+  }
+
+  .logo {
+    margin-left: 2vw;
+    margin-top: 50px;
+  }
+
+  .logo-img {
+    height: 5.5vh;
+    width: 13vw;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-right: 10vw;
+    margin-top: 10px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-append {
+    display: flex;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 30px;
+    margin-top: 60px;
+  }
+
+  .shopping-cart button {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 50px;
+  }
+
+  .shopping-cart svg {
+    height: 3vh;
+    width: 2vw;
   }
 }
 
 /* Dispositivos medianos (laptops, tablets en paisaje) */
 @media (max-width: 992px) {
 
-  .ancho-personalizado-busqueda{
-    width: 70%;
+  .headerGrande{
+    display: inline;
   }
 
+  .headerPequenio{
+    display: none;
+  }
+
+  .btn-alto-ancho{
+    height: 4.5vh;
+    width: 50px;
+  }
+
+  .input-personalizado {
+    height: 4.5vh; /* Altura deseada */
+  }
+
+  .input-group-custom{
+    width: 90%;
+  }
+
+  .ancho-personalizado-busqueda{
+    margin: 0 auto;
+    width: 65%;
+    height: 13vh;
+  }
+
+  .logo {
+    margin-left: 1vw;
+    margin-top: 50px;
+  }
+
+  .logo-img {
+    height: 5vh;
+    width: 13vw;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-right: 10vw;
+    margin-top: 10px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-append {
+    display: flex;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 30px;
+    margin-top: 60px;
+  }
+
+  .shopping-cart button {
+    height: 6vh;
+    width: 4vw;
+    margin-right: 50px;
+  }
+
+  .shopping-cart svg {
+    height: 3vh;
+    width: 2vw;
+  }
 
 }
 
 /* Dispositivos pequeños (tablets en retrato, smartphones grandes) */
 @media (max-width: 768px) {
-  .ancho-personalizado-busqueda{
-    width: 70%;
+
+  .headerGrande{
+    display: none;
   }
+
+  .headerPequenio{
+    display: inline;
+  }
+
   .header{
-    height: 16vh !important;
+    height: 20vh !important;
+  }
+
+  .btn-alto-ancho{
+    height: 4.4vh;
+    width: 50px;
+  }
+
+  .input-personalizado {
+    height: 4.4vh; /* Altura deseada */
+  }
+
+  .input-group-custom{
+    width: 95%;
+  }
+
+  .ancho-personalizado-busqueda{
+    margin: 0 auto;
+    width: 65%;
+    height: 25vh;
+  }
+
+  .logo {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  .logo-img {
+    height: 5vh;
+    width: 25vw;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+    margin-right: 0vw;
+    margin-top: 5px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-append {
+    display: flex;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    margin-top: -5px;
+    height: 6vh;
+    width: 4vw;
+  }
+
+  .shopping-cart button {
+    height: 6vh;
+    width: 8vw;
+  }
+
+  .shopping-cart svg {
+    height: 4vh;
+    width: 3vw;
   }
 }
 
 /* Dispositivos extra pequeños (smartphones) */
 @media (max-width: 576px) {
-  .ancho-personalizado-busqueda{
-    width: 87%;
+
+  .headerGrande{
+    display: none;
   }
+
+  .headerPequenio{
+    display: inline;
+  }
+
   .header{
     height: 20vh !important;
   }
+
+  .btn-alto-ancho{
+    height: 4.4vh;
+    width: 50px;
+  }
+
+  .input-personalizado {
+    height: 4.4vh; /* Altura deseada */
+  }
+
+  .input-group-custom{
+    width: 100%;
+  }
+
+  .ancho-personalizado-busqueda{
+    margin: 0 auto;
+    width: 90%;
+    height: 25vh;
+  }
+
+  .logo {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  .logo-img {
+    height: 4vh;
+    width: 30vw;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+    margin-right: 0vw;
+    margin-top: 5px;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group-append {
+    display: flex;
+    align-items: center;
+  }
+
+  .shopping-cart {
+    margin-top: -10px;
+    height: 7vh;
+    width: 8vw;
+  }
+
+  .shopping-cart button {
+    height: 7vh;
+    width: 8vw;
+  }
+
+  .shopping-cart svg {
+    height: 5vh;
+    width: 4.5vw;
+  }
+
 }
 

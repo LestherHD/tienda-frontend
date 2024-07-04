@@ -17,6 +17,7 @@ export class Services {
   public eventEmitter: EventEmitter<void> = new EventEmitter();
   public mostrarSpinner: Boolean;
   public deshabilitarBotones: Boolean;
+  public activeButtonHeader: string = '';
 
   private searchSubject = new BehaviorSubject<FormControl>(new FormControl());
   search$ = this.searchSubject.asObservable();

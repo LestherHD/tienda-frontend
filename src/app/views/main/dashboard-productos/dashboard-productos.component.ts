@@ -78,6 +78,7 @@ export class DashboardProductosComponent implements OnInit{
   }
 
   viajarADetalle(obj: Productos) {
+    this.service.activeButtonHeader = '';
     let navigationExtras: NavigationExtras = {
       queryParams: { idProduct: obj.id}
     };

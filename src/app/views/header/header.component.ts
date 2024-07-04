@@ -6,6 +6,7 @@ import {ButtonDirective, FormControlDirective} from '@coreui/angular';
 import {ButtonsComponent} from '../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {Services} from '../../services/Services';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,9 @@ export class HeaderComponent implements OnInit{
   valorBusqueda: FormControl;
   valorBusquedaBK: FormControl;
 
-  constructor(public functionsUtils: FunctionsUtils, private services: Services) {
+
+  constructor(public functionsUtils: FunctionsUtils, public services: Services,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -34,4 +37,11 @@ export class HeaderComponent implements OnInit{
     this.services.setSearchValue(this.valorBusquedaBK);
   }
 
+  setActive(buttonName: string) {
+    this.services.activeButtonHeader = buttonName;
+  }
+
+  viajarInicio() {
+    this.functionsUtils.navigateOption(this.router, 'dashboard', new class implements NavigationExtras {});
+  }
 }

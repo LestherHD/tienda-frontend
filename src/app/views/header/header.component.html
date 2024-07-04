@@ -1,27 +1,72 @@
-<div class="header">
-  <div class="logo">
-    <img src="/assets/images/logo.png" class="logo-img">
-  </div>
-  <div class="ancho-personalizado-busqueda">
-    <div class="button-group">
-      <button class="btn btn-primary">Button 1</button>
-      <button class="btn btn-secondary">Button 2</button>
-      <button class="btn btn-success">Button 3</button>
+<!--Media queries grandes arriba de 768 de ancho-->
+<div class="headerGrande">
+  <div class="header">
+    <div class="logo">
+      <img src="/assets/images/logo.png" class="logo-img">
     </div>
-    <div class="input-group">
-      <input class="form-control input-alto" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
-             (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
-      <div class="input-group-append">
-        <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
-          <svg cIcon name="cilZoom"></svg>
-        </button>
+    <div class="ancho-personalizado-busqueda">
+      <div class="button-group">
+        <div class="button-container" (click)="setActive('inicio')">
+          <button class="border-0 text-white btn" (click)="viajarInicio()">Inicio</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'inicio'"></div>
+        </div>
+        <div class="button-container" (click)="setActive('tiposProducto')">
+          <button class="border-0 text-white btn" >Tipos de producto</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+        </div>
+      </div>
+      <div class="input-group input-group-custom">
+        <input class="form-control input-personalizado" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+               (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
+        <div class="input-group-append">
+          <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
+            <svg cIcon name="cilZoom"></svg>
+          </button>
+        </div>
       </div>
     </div>
+    <div class="shopping-cart">
+      <button cButton color="danger" class="text-white btn-alto-ancho border-0" size="lg" variant="outline">
+        <svg cIcon name="cilCart"></svg>
+      </button>
+    </div>
   </div>
-  <div class="shopping-cart">
-    <button cButton color="danger" class="text-white btn-alto-ancho border-0" size="lg" variant="outline">
-      <svg cIcon name="cilCart"></svg>
-    </button>
+</div>
+
+
+<!--Media queries pequeños abajo o igual a 768 de ancho-->
+<div class="headerPequenio">
+  <div class="header">
+    <div class="ancho-personalizado-busqueda">
+      <div class="logo">
+        <img src="/assets/images/logo.png" class="logo-img">
+      </div>
+      <div class="button-group">
+        <div class="button-container" (click)="setActive('inicio')">
+          <button class="border-0 text-white btn" (click)="viajarInicio()">Inicio</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'inicio'"></div>
+        </div>
+        <div class="button-container" (click)="setActive('tiposProducto')">
+          <button class="border-0 text-white btn" >Tipos de producto</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+        </div>
+        <div class="shopping-cart">
+          <button  class="text-white btn-alto-ancho border-0 btn">
+            <svg cIcon name="cilCart"></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="input-group input-group-custom">
+        <input class="form-control input-personalizado" id="exampleFormControlInput1" placeholder="Buscar..." [formControl]="valorBusqueda"
+               (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
+        <div class="input-group-append">
+          <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
+            <svg cIcon name="cilZoom"></svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
