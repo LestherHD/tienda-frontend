@@ -11,6 +11,7 @@ import {ButtonsComponent} from '../../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {NavigationExtras, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-productos',
@@ -28,7 +29,8 @@ export class DashboardProductosComponent implements OnInit{
   valorBusqueda: FormControl;
   valorBusquedaBK: FormControl;
 
-  constructor(private service: Services, public functionsUtils: FunctionsUtils, private router: Router) {
+  constructor(private service: Services, public functionsUtils: FunctionsUtils, private router: Router,
+              private titleService: Title) {
     this.pagination = new NgbPagination();
     this.pagination.page = 0;
     this.pagination.pageSize = 30;
@@ -37,6 +39,7 @@ export class DashboardProductosComponent implements OnInit{
 
   ngOnInit(): void {
 
+    this.titleService.setTitle('Holandesa');
     this.service.search$.subscribe(value => {
       this.valorBusqueda = value;
       this.filtrar();

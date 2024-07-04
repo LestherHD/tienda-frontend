@@ -12,6 +12,7 @@ import {Productos} from '../../../bo/Productos';
 import {ActivatedRoute} from '@angular/router';
 import {ProductosRequestDTO} from '../../../dto/ProductosRequestDTO';
 import {Caracteristicas} from '../../../bo/Caracteristicas';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -32,7 +33,7 @@ export class DetalleProductoComponent implements OnInit{
   cantidad: FormControl;
 
   constructor(private service: Services, functionUtils: FunctionsUtils,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private titleService: Title) {
     this.agregado = false;
   }
 
@@ -62,6 +63,7 @@ export class DetalleProductoComponent implements OnInit{
 
     this.service.getFromEntityAndMethod('productos', 'getById', requestDTO).subscribe((res: Productos) =>{
       this.producto = res;
+      this.titleService.setTitle('Holandesa - ' + this.producto.nombre);
       this.producto.imagen = 'data:image/jpeg;base64,'+this.producto.imagen;
     }, errors =>{
       console.error(errors);

@@ -1,5 +1,5 @@
 .header{
-  background: rgb(239, 75, 110);
+  background: rgb(0, 179, 186);
   height: 16vh !important;
   overflow-x: hidden;
   //width: 100vw;
@@ -35,6 +35,12 @@
 .logo {
   margin-left: 2vw;
   margin-top: 50px;
+  background-color: white;
+  height: 7.5vh;
+  width: 14vw;
+  text-align: center;
+  align-content: center;
+  border-radius: 2px;
 }
 
 .logo-img {
@@ -196,6 +202,8 @@
   .logo {
     margin-left: 2vw;
     margin-top: 50px;
+    height: 7vh;
+    width: 15vw;
   }
 
   .logo-img {
@@ -273,11 +281,13 @@
   .logo {
     margin-left: 1vw;
     margin-top: 50px;
+    height: 7vh;
+    width: 16.4vw;
   }
 
   .logo-img {
     height: 5vh;
-    width: 13vw;
+    width: 15vw;
   }
 
   .button-group {
@@ -354,9 +364,10 @@
 
   .logo {
     align-items: center;
-    width: 100%;
     text-align: center;
-    margin-top: 0px;
+    height: 7vh;
+    width: 27.5vw;
+    margin: 0 auto;
   }
 
   .logo-img {
@@ -435,14 +446,15 @@
 
   .logo {
     align-items: center;
-    width: 100%;
     text-align: center;
-    margin-top: 0px;
+    height: 6vh;
+    width: 33vw;
+    margin: 0 auto;
   }
 
   .logo-img {
     height: 4vh;
-    width: 30vw;
+    width: 28vw;
   }
 
   .button-group {
