@@ -33,7 +33,7 @@ export class DetalleProductoComponent implements OnInit{
   cantidad: FormControl;
   caracteristicasSeleccionadas: { [nombre: string]: any } = {};
 
-  constructor(public service: Services, functionUtils: FunctionsUtils,
+  constructor(public service: Services, public functionUtils: FunctionsUtils,
               private route: ActivatedRoute, private titleService: Title) {
     this.agregado = false;
   }

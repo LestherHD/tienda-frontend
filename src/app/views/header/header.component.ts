@@ -61,6 +61,7 @@ export class HeaderComponent implements OnInit{
   viajarACarrito() {
     this.services.mostrarSpinner = true;
     this.functionsUtils.navigateOption(this.router, 'shopping-cart', new class implements NavigationExtras {});
+    this.services.mostrarSpinner = false;
   }
 }
 

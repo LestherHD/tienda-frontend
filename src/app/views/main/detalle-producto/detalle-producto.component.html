@@ -49,6 +49,12 @@
           </div>
         </div>
       </div>
+      <div class="col-auto mt-4 d-flex justify-content-center w-100">
+        <label class="card-description-custom fw-semibold"  style="margin-right: 5px;">Precio:</label>
+        <p class="text-center ">
+          <span class="justify-text card-description-custom">Q{{functionUtils.formatPrice(producto.precio)}}</span>
+        </p>
+      </div>
       <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
         <c-alert *ngIf="agregado" color="success">Se agregó al carrito de compras</c-alert>
         <button *ngIf="!agregado" (click)="agregarACarrito()" cButton color="primary">

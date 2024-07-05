@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
-  <c-card class="my-5 ancho-personalizado">
+  <c-card class="my-5 ancho-personalizado" *ngIf="listResponse && listResponse.length > 0">
     <div class="d-flex justify-content-center mt-3">
       <span class="tittle">Carrito</span>
     </div>
@@ -27,45 +27,31 @@
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio)}}</td>
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio * item.cantidad)}}</td>
               <td class="align-center">
-                <button cButton color="danger" variant="outline" size="sm" (click)="eliminar(item)">
+                <button cButton color="danger" variant="outline" size="sm" (click)="eliminar(item.producto.id)">
                   <svg cIcon name="cilTrash"></svg>
                 </button>
               </td>
             </tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="fw-bold">Total de compra: </td>
+            <td class="align-center fw-bold">Q{{functionsUtils.formatPrice(totalCompra)}}</td>
             </tbody>
           </table>
         </div>
-        <!--<div class="row col-12">-->
-          <!--<div class="col-12 col-md-6" style="margin-top: 1vh; text-align: center;">-->
-            <!--<div class="col-auto">-->
-              <!--<ngb-pagination [(page)]="pagination.page"-->
-                              <!--(pageChange)="changePage($event-1)"-->
-                              <!--[maxSize]="pagination.maxSize"-->
-                              <!--[pageSize]="pagination.pageSize"-->
-                              <!--[collectionSize]="pagination.collectionSize"></ngb-pagination>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="col-12 col-md-6 d-flex flex-column flex-md-row justify-content-end align-items-center">-->
-            <!--<div class="col-auto">-->
-              <!--<span>Registros por página:</span>-->
-            <!--</div>-->
-            <!--<div class="col-auto">-->
-              <!--<select class="form-select form-select-sm" [(ngModel)]="pagination.pageSize" (change)="changeSize($event.target)">-->
-                <!--<option value="5">5</option>-->
-                <!--<option value="10">10</option>-->
-                <!--<option value="20">20</option>-->
-                <!--<option value="50">50</option>-->
-                <!--<option value="100">100</option>-->
-              <!--</select>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
       </c-container>
       <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
         <button (click)="realizarCompra()" cButton color="primary">
           Finalizar Compra
         </button>
       </div>
+    </c-card-body>
+  </c-card>
+  <c-card class="my-5 ancho-personalizado" *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
+    <c-card-body class="d-flex justify-content-center flex-column align-items-center align-content-center" >
+      <h4>No existen productos en el carrito de compras</h4>
     </c-card-body>
   </c-card>
 </div>

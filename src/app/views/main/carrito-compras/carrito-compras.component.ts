@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonsComponent} from '../../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {DetallePedido} from '../../../bo/DetallePedido';
+import {Productos} from '../../../bo/Productos';
 
 @Component({
   selector: 'app-carrito-compras',
@@ -29,6 +30,8 @@ import {DetallePedido} from '../../../bo/DetallePedido';
 })
 export class CarritoComprasComponent implements OnInit{
   listResponse: DetallePedido[];
+  totalCompra: number;
+  mapaProductos: Record<number, DetalleProducto> = {};
 
   constructor(public functionsUtils: FunctionsUtils, public services: Services,
               private router: Router) {
@@ -36,6 +39,7 @@ export class CarritoComprasComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.totalCompra = 0;
     this.cargarMapaDesdeLocalStorage();
     this.services.mostrarSpinner = false;
   }
@@ -44,26 +48,40 @@ export class CarritoComprasComponent implements OnInit{
 
   }
 
-  eliminar(item: any) {
-    
-  }
-
-  cargarMapaDesdeLocalStorage(): void {
-    const data = localStorage.getItem('mapaProductos');
-    if (data) {
-      const mapaProductos = JSON.parse(data);
-      for (const key in mapaProductos) {
-        if (mapaProductos.hasOwnProperty(key)) {
-          const cantidad = mapaProductos[key].cantidad;
-          console.log('cantidad: ', cantidad);
-          const obj = mapaProductos[key].detalles;
-          console.log(obj);
-          const detalle = new DetallePedido(null, obj, obj.descripcion, cantidad, obj.precio);
-          this.listResponse.push(detalle);
-        }
-      }
-
+  eliminar(productId: number): void {
+    if (this.mapaProductos[productId]) {
+      delete this.mapaProductos[productId];
+      this.guardarMapaEnLocalStorage();
     }
   }
 
+  guardarMapaEnLocalStorage(): void {
+    localStorage.setItem('mapaProductos', JSON.stringify(this.mapaProductos));
+    this.cargarMapaDesdeLocalStorage();
+  }
+
+  cargarMapaDesdeLocalStorage(): void {
+    this.totalCompra = 0;
+    this.listResponse = [];
+    const data = localStorage.getItem('mapaProductos');
+    if (data) {
+      this.mapaProductos = JSON.parse(data);
+      const numeroDeProductos = Object.keys(this.mapaProductos).length;
+      this.services.cantidadProductosCarrito = numeroDeProductos;
+      for (const key in this.mapaProductos) {
+        if (this.mapaProductos.hasOwnProperty(key)) {
+          const cantidad = this.mapaProductos[key].cantidad;
+          const obj = this.mapaProductos[key].producto;
+          const detalle = new DetallePedido(null, obj, obj.descripcion, cantidad, obj.precio);
+          this.listResponse.push(detalle);
+          this.totalCompra += Number((cantidad * obj.precio));
+        }
+      }
+    }
+  }
+}
+
+interface DetalleProducto {
+  producto: Productos;
+  cantidad: number;
 }
