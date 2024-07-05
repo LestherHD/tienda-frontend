@@ -35,8 +35,8 @@
                 <div class="col-auto mt-3">
                   <label class="card-description-custom fw-semibold m-1">{{obj.nombre}}: </label>
                   <div class="col-md-auto">
-                    <select class="form-select m-1" >
-                      <option value="valor" *ngFor="let valor of getValoresPorIdCaracteristica(obj.id)">{{valor}}</option>
+                    <select class="form-select m-1" (change)="onSeleccionarValorCaracteristica(obj.nombre, $event, null)">
+                      <option value="valor" *ngFor="let valor of getValoresPorIdCaracteristica(obj)">{{valor}}</option>
                     </select>
                   </div>
                 </div>

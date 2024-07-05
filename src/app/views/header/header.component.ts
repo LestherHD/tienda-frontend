@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit{
   filtrar(): void {
     this.valorBusquedaBK = new FormControl(this.valorBusqueda.value, Validators.required);
     this.services.setSearchValue(this.valorBusquedaBK);
+    this.viajarInicio();
   }
 
   setActive(buttonName: string) {
@@ -56,9 +57,14 @@ export class HeaderComponent implements OnInit{
       this.services.cantidadProductosCarrito = numeroDeProductos;
     }
   }
+
+  viajarACarrito() {
+    this.services.mostrarSpinner = true;
+    this.functionsUtils.navigateOption(this.router, 'shopping-cart', new class implements NavigationExtras {});
+  }
 }
 
 interface DetalleProducto {
-  detalles: Productos;
+  producto: Productos;
   cantidad: number;
 }

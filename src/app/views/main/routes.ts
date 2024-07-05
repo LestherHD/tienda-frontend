@@ -18,6 +18,13 @@ export const routes: Routes = [
           title: 'Detalle de producto'
         }
       },
+      {
+        path: 'shopping-cart',
+        loadComponent: () => import('./carrito-compras/carrito-compras.component').then(m => m.CarritoComprasComponent),
+        data: {
+          title: 'Carrito de compras'
+        }
+      }
     ]
   }
 ];

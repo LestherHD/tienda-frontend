@@ -31,6 +31,7 @@ export class DetalleProductoComponent implements OnInit{
   agregado: boolean;
   mapaProductos: Record<number, DetalleProducto> = {};
   cantidad: FormControl;
+  caracteristicasSeleccionadas: { [nombre: string]: any } = {};
 
   constructor(public service: Services, functionUtils: FunctionsUtils,
               private route: ActivatedRoute, private titleService: Title) {
@@ -46,6 +47,7 @@ export class DetalleProductoComponent implements OnInit{
 
     this.cargarDatos();
     this.cargarMapaDesdeLocalStorage();
+    this.service.mostrarSpinner = false;
   }
 
   cargarDatos(){
@@ -70,10 +72,17 @@ export class DetalleProductoComponent implements OnInit{
 
   }
 
-  getValoresPorIdCaracteristica(idCaracteristica: number): string[] {
-    return this.producto.caracteristicas
-      .filter(item => item.caracteristica.id === idCaracteristica)
+  getValoresPorIdCaracteristica(caracteristica: Caracteristicas): string[] {
+    const obj = this.producto.caracteristicas
+      .filter(item => item.caracteristica.id === caracteristica.id)
       .map(item => item.valor);
+
+
+    obj.forEach((item: any) => {
+        this.onSeleccionarValorCaracteristica(caracteristica.nombre, null, item);
+    });
+
+    return obj;
   }
 
   filtrarCaracteristicasAsociadas(): Caracteristicas[] {
@@ -91,7 +100,7 @@ export class DetalleProductoComponent implements OnInit{
       this.mapaProductos[this.producto.id].cantidad += Number(this.cantidad.value);
     } else {
       this.mapaProductos[this.producto.id] = {
-        detalles: this.producto,
+        producto: this.producto,
         cantidad: Number(this.cantidad.value)
       };
     }
@@ -107,15 +116,24 @@ export class DetalleProductoComponent implements OnInit{
     const data = localStorage.getItem('mapaProductos');
     if (data) {
       this.mapaProductos = JSON.parse(data);
-      console.log('this.mapaProductos: ', this.mapaProductos);
       const numeroDeProductos = Object.keys(this.mapaProductos).length;
       this.service.cantidadProductosCarrito = numeroDeProductos;
     }
   }
 
+  onSeleccionarValorCaracteristica(nombre: string, event: any, valor: string) {
+
+    if (event == null){
+      this.caracteristicasSeleccionadas[nombre] = valor;
+    } else {
+      this.caracteristicasSeleccionadas[nombre] = event.target.value;
+    }
+    console.log(this.caracteristicasSeleccionadas)
+  }
+
 }
 
 interface DetalleProducto {
-  detalles: Productos;
+  producto: Productos;
   cantidad: number;
 }

@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="shopping-cart">
-      <button color="dark" variant="outline" class="text-white btn-alto-ancho border-0 position-relative mx-2 btn" variant="outline">
+      <button (click)="viajarACarrito()" color="dark" variant="outline" class="text-white btn-alto-ancho border-0 position-relative mx-2 btn" variant="outline">
         <svg cIcon name="cilCart"></svg>
         <c-badge *ngIf="this.services.cantidadProductosCarrito > 0" color="danger" position="top-end" shape="rounded-pill">{{this.services.cantidadProductosCarrito}}</c-badge>
       </button>
@@ -52,7 +52,7 @@
           <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
         </div>
         <div class="shopping-cart button-container">
-          <button color="dark" class="text-white border-0 position-relative mx-2 btn">
+          <button (click)="viajarACarrito()" color="dark" class="text-white border-0 position-relative mx-2 btn">
             <svg cIcon name="cilCart"></svg>
             <c-badge *ngIf="this.services.cantidadProductosCarrito > 0" color="danger" position="top-end" shape="rounded-pill">{{this.services.cantidadProductosCarrito}}</c-badge>
           </button>
