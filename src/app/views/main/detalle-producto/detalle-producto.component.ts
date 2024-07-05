@@ -32,6 +32,7 @@ export class DetalleProductoComponent implements OnInit{
   mapaProductos: Record<number, DetalleProducto> = {};
   cantidad: FormControl;
   caracteristicasSeleccionadas: { [nombre: string]: any } = {};
+  filteredCaracteristicas: Caracteristicas[] = [];
 
   constructor(public service: Services, public functionUtils: FunctionsUtils,
               private route: ActivatedRoute, private titleService: Title) {
@@ -64,6 +65,7 @@ export class DetalleProductoComponent implements OnInit{
 
     this.service.getFromEntityAndMethod('productos', 'getById', requestDTO).subscribe((res: Productos) =>{
       this.producto = res;
+      this.filteredCaracteristicas = this.filtrarCaracteristicasAsociadas();
       this.titleService.setTitle('Holandesa - ' + this.producto.nombre);
       this.producto.imagen = 'data:image/jpeg;base64,'+this.producto.imagen;
     }, errors =>{
@@ -78,10 +80,9 @@ export class DetalleProductoComponent implements OnInit{
       .map(item => item.valor);
 
 
-    obj.forEach((item: any) => {
-        this.onSeleccionarValorCaracteristica(caracteristica.nombre, null, item);
-    });
-
+    if (obj){
+      this.onSeleccionarValorCaracteristica(caracteristica.nombre, null, obj[0]);
+    }
     return obj;
   }
 
@@ -90,7 +91,11 @@ export class DetalleProductoComponent implements OnInit{
     const idsAsociados = this.producto.caracteristicas.map(pc => pc.caracteristica.id);
 
     // Filtrar la lista de características para incluir solo las que tienen IDs asociados
-    return this.listaCaracteristicas.filter(c => idsAsociados.includes(c.id));
+    const list = this.listaCaracteristicas.filter(c => idsAsociados.includes(c.id));
+    list.forEach(x => {
+      x.listaValores = this.getValoresPorIdCaracteristica(x);
+    });
+    return list;
   }
 
 
@@ -128,7 +133,6 @@ export class DetalleProductoComponent implements OnInit{
     } else {
       this.caracteristicasSeleccionadas[nombre] = event.target.value;
     }
-    console.log(this.caracteristicasSeleccionadas)
   }
 
 }

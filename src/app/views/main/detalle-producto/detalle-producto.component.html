@@ -31,12 +31,12 @@
               </div>
             </div>
             <div *ngIf="producto && producto.caracteristicas && producto.caracteristicas.length > 0">
-              <div *ngFor="let obj of filtrarCaracteristicasAsociadas()">
+              <div *ngFor="let obj of filteredCaracteristicas">
                 <div class="col-auto mt-3">
                   <label class="card-description-custom fw-semibold m-1">{{obj.nombre}}: </label>
                   <div class="col-md-auto">
                     <select class="form-select m-1" (change)="onSeleccionarValorCaracteristica(obj.nombre, $event, null)">
-                      <option value="valor" *ngFor="let valor of getValoresPorIdCaracteristica(obj)">{{valor}}</option>
+                      <option value="{{valor}}" *ngFor="let valor of obj.listaValores">{{valor}}</option>
                     </select>
                   </div>
                 </div>
