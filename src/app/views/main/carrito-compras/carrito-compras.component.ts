@@ -112,8 +112,6 @@ export class CarritoComprasComponent implements OnInit{
       this.form.controls.telefono.value, this.form.controls.departamento.value, objSucursal, this.form.controls.metodoPago.value,
       this.listResponse, this.totalCompra);
 
-    console.log('pedido: ', pedido);
-
     this.services.saveEntityMethod('productos', 'savePedido', pedido).subscribe( res => {
       this.type = res.error ? 'danger' : 'success';
       this.mensaje = res.mensaje;
@@ -123,6 +121,7 @@ export class CarritoComprasComponent implements OnInit{
         this.mostrarMensaje = false;
         this.deshabilitarBotones = res.error ? false : true;
         if (!res.error){
+          this.cargarMapaDesdeLocalStorage();
           localStorage.removeItem('mapaProductos');
         }
       } , 2000);
@@ -152,6 +151,7 @@ export class CarritoComprasComponent implements OnInit{
   }
 
   cargarMapaDesdeLocalStorage(): void {
+    this.services.cantidadProductosCarrito = 0;
     this.totalCompra = 0;
     this.listResponse = [];
     const data = localStorage.getItem('mapaProductos');
