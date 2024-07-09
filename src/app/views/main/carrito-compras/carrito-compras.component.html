@@ -42,12 +42,93 @@
           </table>
         </div>
       </c-container>
-      <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
-        <button (click)="realizarCompra()" cButton color="primary">
-          Finalizar Compra
-        </button>
+    </c-card-body>
+
+    <c-card-body class="d-flex justify-content-center">
+      <div class="col-6">
+        <form cForm [formGroup]="form" *ngIf="form">
+          <c-alert *ngIf="mostrarMensaje" color="{{type}}">{{mensaje}}</c-alert>
+          <div class="d-flex justify-content-center mt-3">
+            <span class="tittle">Datos personales</span>
+          </div>
+          <br>
+          <!--Nombres-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <input id="nombres" (blur)="functionsUtils.removeSpaces('nombres', form)" [valid]="(functionsUtils.campoRequerido(form, 'nombres') == 1 ? false : null)" autoComplete="name" [maxLength]="70" cFormControl placeholder="Nombres" formControlName="nombres" />
+              <label cLabel for="nombres">Nombres*</label>
+              <c-form-feedback [valid]="false">Campo requerido.</c-form-feedback>
+            </div>
+          </c-input-group>
+          <!--Apellidos-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <input id="apellidos" (blur)="functionsUtils.removeSpaces('apellidos', form)" [valid]="functionsUtils.campoRequerido(form, 'apellidos') == 1 ? false : null" autoComplete="name" [maxLength]="60" cFormControl placeholder="Apellidos" formControlName="apellidos" />
+              <label cLabel for="apellidos">Apellidos*</label>
+              <c-form-feedback [valid]="false">Campo requerido.</c-form-feedback>
+            </div>
+          </c-input-group>
+          <!--Telefono-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <input id="telefono" (blur)="functionsUtils.removeSpaces('telefono', form)"
+                     [valid]="functionsUtils.campoRequerido(form, 'telefono') == 1 ? false :
+                 functionsUtils.campoRequerido(form, 'telefono') == 3 ? false : null"
+                     autoComplete="telefono" [maxLength]="8" cFormControl placeholder="Teléfono" formControlName="telefono"/>
+              <label cLabel for="telefono">Teléfono*</label>
+              <c-form-feedback *ngIf="functionsUtils.campoRequerido(form, 'telefono') == 1" [valid]="false">Campo requerido.</c-form-feedback>
+              <c-form-feedback *ngIf="functionsUtils.campoRequerido(form, 'telefono') == 3" [valid]="false">Solo se permiten valores numéricos del 0 al 9 con longitud máxima de 8 carácteres</c-form-feedback>
+            </div>
+          </c-input-group>
+          <div class="d-flex justify-content-center mt-3">
+            <span class="tittle">Datos de envío</span>
+          </div>
+          <br>
+          <!--Departamento-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <select id="departamento" cSelect formControlName="departamento" (change)="filtrarLista()">
+                <option *ngFor="let departamento of dataUtils.listaDepartamentos" [value]="departamento.codigo">
+                  {{dataUtils.descripcionPorCodigo(departamento.codigo)}}
+                </option>
+              </select>
+              <label cLabel style="margin-top: -5px;" for="departamento">Departamento*</label>
+              <c-form-feedback [valid]="false">Campo requerido.</c-form-feedback>
+            </div>
+          </c-input-group>
+          <!--Sucursal-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <select id="sucursal" cSelect formControlName="sucursal">
+                <option *ngFor="let obj of listaSucursalesFiltrada" [value]="obj.id">
+                  {{obj.nombre}}
+                </option>
+              </select>
+              <label cLabel style="margin-top: -5px;" for="sucursal">Sucursal*</label>
+              <c-form-feedback [valid]="false">Campo requerido.</c-form-feedback>
+            </div>
+          </c-input-group>
+          <!--Metodo Pago-->
+          <c-input-group class="mb-2">
+            <div [cFormFloating]="true">
+              <select id="metodoPago" cSelect formControlName="metodoPago">
+                <option *ngFor="let obj of listaMetodoPago" [value]="obj.id">
+                  {{obj.nombre}}
+                </option>
+              </select>
+              <label cLabel style="margin-top: -5px;" for="metodoPago">Método de pago*</label>
+              <c-form-feedback [valid]="false">Campo requerido.</c-form-feedback>
+            </div>
+          </c-input-group>
+        </form>
       </div>
     </c-card-body>
+    <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
+      <button (click)="realizarCompra()" [disabled]="!form || (form && form.invalid) || deshabilitarBotones" cButton color="primary">
+        Finalizar Compra
+      </button>
+    </div>
+
   </c-card>
   <c-card class="my-5 ancho-personalizado" *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
     <c-card-body class="d-flex justify-content-center flex-column align-items-center align-content-center" >

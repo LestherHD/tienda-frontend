@@ -106,7 +106,8 @@ export class DetalleProductoComponent implements OnInit{
     } else {
       this.mapaProductos[this.producto.id] = {
         producto: this.producto,
-        cantidad: Number(this.cantidad.value)
+        cantidad: Number(this.cantidad.value),
+        caracteristicas: this.caracteristicasSeleccionadas
       };
     }
     this.guardarMapaEnLocalStorage();
@@ -140,4 +141,5 @@ export class DetalleProductoComponent implements OnInit{
 interface DetalleProducto {
   producto: Productos;
   cantidad: number;
+  caracteristicas: any;
 }

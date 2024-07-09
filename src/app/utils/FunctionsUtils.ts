@@ -199,8 +199,10 @@ export class FunctionsUtils {
 
       // Teléfono inválido
       if (form.controls[name].touched) {
-        if ((typeof strValue === 'string' && !/^[0-9\s]+$/.test(strValue.trim())) || (typeof strValue === 'number' && isNaN(strValue))) {
-          return 3;
+        if (form.controls[name].touched) {
+          if((!/^[0-9\s]+$/.test(form.controls[name].value.trim())) || form.controls[name].value.length < 8){
+            return 3;
+          }
         }
       }
 

@@ -8,23 +8,51 @@ import {
   CardBodyComponent,
   CardComponent,
   ContainerComponent,
-  FormControlDirective, FormFeedbackComponent, FormFloatingDirective, TableDirective
+  FormControlDirective,
+  FormFeedbackComponent,
+  FormFloatingDirective,
+  FormSelectDirective,
+  InputGroupComponent,
+  TableDirective
 } from '@coreui/angular';
 import {CustomSpinnerComponent} from '../../utils/custom-spinner/custom-spinner.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {ButtonsComponent} from '../../buttons/buttons/buttons.component';
 import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {DetallePedido} from '../../../bo/DetallePedido';
 import {Productos} from '../../../bo/Productos';
+import {DataUtils} from '../../../utils/DataUtils';
+import {SelectComponent} from '../../forms/select/select.component';
+import {Sucursales} from '../../../bo/Sucursales';
+import {Pedidos} from '../../../bo/Pedidos';
+
+function onlyNumbersAndSpaces(control: AbstractControl): ValidationErrors | null {
+  const value = control.value;
+
+  if (!/^[0-9\s]+$/.test(value)) {
+    return { onlyNumbersAndSpaces: true };
+  }
+
+  return null;
+}
 
 @Component({
   selector: 'app-carrito-compras',
   standalone: true,
   imports: [CardComponent, CardBodyComponent, ButtonDirective, CustomSpinnerComponent, NgbPaginationModule,
     CommonModule, FormControlDirective, ReactiveFormsModule, ButtonDirective, ButtonsComponent, IconComponent, IconDirective,
-    AlertComponent, ContainerComponent, FormFeedbackComponent, FormFloatingDirective, FormsModule, TableDirective],
+    AlertComponent, ContainerComponent, FormFeedbackComponent, FormFloatingDirective, FormsModule, TableDirective, InputGroupComponent,
+  SelectComponent, FormSelectDirective],
   templateUrl: './carrito-compras.component.html',
   styleUrl: './carrito-compras.component.scss'
 })
@@ -32,19 +60,82 @@ export class CarritoComprasComponent implements OnInit{
   listResponse: DetallePedido[];
   totalCompra: number;
   mapaProductos: Record<number, DetalleProducto> = {};
+  form: FormGroup<{ nombres: any; apellidos: any; telefono: any; departamento: any; sucursal: any;
+    metodoPago: any;}>;
+  listaSucursales: Sucursales[];
+  listaSucursalesFiltrada: Sucursales[];
+  listaMetodoPago: any = [{id: 'E', nombre: 'Efectivo'}, {id: 'T', nombre: 'Tarjeta'}];
+  type: string;
+  mensaje: string;
+  deshabilitarBotones = false;
+  mostrarMensaje = false;
 
   constructor(public functionsUtils: FunctionsUtils, public services: Services,
+              public dataUtils: DataUtils,
               private router: Router) {
     this.listResponse = [];
+    this.type = '';
+    this.mensaje = '';
+    this.mostrarMensaje = false;
+    this.deshabilitarBotones = false;
   }
 
   ngOnInit(): void {
     this.totalCompra = 0;
     this.cargarMapaDesdeLocalStorage();
     this.services.mostrarSpinner = false;
+    this.form = new FormGroup({
+      nombres: new FormControl('', Validators.required),
+      apellidos: new FormControl('', Validators.required),
+      telefono: new FormControl('', [Validators.required, onlyNumbersAndSpaces, Validators.minLength(8)]),
+      departamento: new FormControl('', Validators.required),
+      sucursal: new FormControl('', Validators.required),
+      metodoPago: new FormControl('E', Validators.required)
+    });
+
+    this.form.controls.departamento.setValue("1");
+
+    this.services.getAllItemsFromEntity('sucursales').subscribe((res: Sucursales[]) =>{
+      this.listaSucursales = res;
+      this.filtrarLista();
+    }, error => {
+      console.error(error);
+    });
   }
 
   realizarCompra() {
+
+    const objSucursal: Sucursales = this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0 ?
+      this.listaSucursalesFiltrada.find(x => x.id === Number(this.form.controls.sucursal.value)) : null;
+
+    const pedido = new Pedidos(null, 'N', this.form.controls.nombres.value, this.form.controls.apellidos.value,
+      this.form.controls.telefono.value, this.form.controls.departamento.value, objSucursal, this.form.controls.metodoPago.value,
+      this.listResponse, this.totalCompra);
+
+    console.log('pedido: ', pedido);
+
+    this.services.saveEntityMethod('productos', 'savePedido', pedido).subscribe( res => {
+      this.type = res.error ? 'danger' : 'success';
+      this.mensaje = res.mensaje;
+      this.deshabilitarBotones = true;
+      this.mostrarMensaje = true;
+      setTimeout(() => {
+        this.mostrarMensaje = false;
+        this.deshabilitarBotones = res.error ? false : true;
+        if (!res.error){
+          localStorage.removeItem('mapaProductos');
+        }
+      } , 2000);
+
+    }, error1 => {
+      this.type = 'danger';
+      this.mensaje = 'Ha ocurrido un error al insertar los datos';
+      this.mostrarMensaje = true;
+      setTimeout(() => {
+        this.mostrarMensaje = false;
+      } , 1500);
+      console.error('Error al consumir Post');
+    });
 
   }
 
@@ -71,17 +162,31 @@ export class CarritoComprasComponent implements OnInit{
       for (const key in this.mapaProductos) {
         if (this.mapaProductos.hasOwnProperty(key)) {
           const cantidad = this.mapaProductos[key].cantidad;
-          const obj = this.mapaProductos[key].producto;
-          const detalle = new DetallePedido(null, obj, obj.descripcion, cantidad, obj.precio);
+          const producto = this.mapaProductos[key].producto;
+          const caracteristicas = this.mapaProductos[key].caracteristicas;
+          const descripcion = producto.descripcion;
+          console.log('caracteristicas: ', caracteristicas);
+          const detalle = new DetallePedido(null, producto, descripcion, cantidad, producto.precio);
           this.listResponse.push(detalle);
-          this.totalCompra += Number((cantidad * obj.precio));
+          this.totalCompra += Number((cantidad * producto.precio));
         }
       }
     }
   }
+
+  filtrarLista(){
+    this.form.controls.sucursal.setValue(null);
+    this.listaSucursalesFiltrada = this.listaSucursales.filter(x => x.departamento === this.form.controls.departamento.value)
+    if (this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0){
+      this.form.controls.sucursal.setValue(this.listaSucursalesFiltrada[0].id);
+    }
+  }
 }
+
+
 
 interface DetalleProducto {
   producto: Productos;
   cantidad: number;
+  caracteristicas: any;
 }
