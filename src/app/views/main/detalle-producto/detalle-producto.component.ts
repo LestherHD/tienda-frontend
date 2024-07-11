@@ -61,7 +61,7 @@ export class DetalleProductoComponent implements OnInit{
     });
 
     const requestDTO: ProductosRequestDTO = new ProductosRequestDTO(new Productos(this.idProduct, 'Prueba', null, null, null, null, null,
-      null, null), null, null);
+      null, null, null), null, null);
 
     this.service.getFromEntityAndMethod('productos', 'getById', requestDTO).subscribe((res: Productos) =>{
       this.producto = res;

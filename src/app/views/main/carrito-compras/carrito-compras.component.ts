@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {Services} from '../../../services/Services';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {
   AlertComponent,
   ButtonDirective,
@@ -62,6 +62,8 @@ export class CarritoComprasComponent implements OnInit{
   mapaProductos: Record<number, DetalleProducto> = {};
   form: FormGroup<{ nombres: any; apellidos: any; telefono: any; departamento: any; sucursal: any;
     metodoPago: any;}>;
+  formMetodoPago: FormGroup<{ nombres: any; apellidos: any; telefono: any; departamento: any; sucursal: any;
+    metodoPago: any;}>;
   listaSucursales: Sucursales[];
   listaSucursalesFiltrada: Sucursales[];
   listaMetodoPago: any = [{id: 'E', nombre: 'Efectivo'}, {id: 'T', nombre: 'Tarjeta'}];
@@ -69,6 +71,7 @@ export class CarritoComprasComponent implements OnInit{
   mensaje: string;
   deshabilitarBotones = false;
   mostrarMensaje = false;
+  mostrarModal: boolean;
 
   constructor(public functionsUtils: FunctionsUtils, public services: Services,
               public dataUtils: DataUtils,
@@ -105,6 +108,18 @@ export class CarritoComprasComponent implements OnInit{
 
   realizarCompra() {
 
+    if(this.form.controls.metodoPago.value === 'E'){
+      this.finalizarCompra();
+    } else if (this.form.controls.metodoPago.value === 'T'){
+
+    }
+  }
+
+  mostrarModalMetodoPago(){
+
+  }
+
+  finalizarCompra(){
     const objSucursal: Sucursales = this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0 ?
       this.listaSucursalesFiltrada.find(x => x.id === Number(this.form.controls.sucursal.value)) : null;
 
@@ -121,8 +136,9 @@ export class CarritoComprasComponent implements OnInit{
         this.mostrarMensaje = false;
         this.deshabilitarBotones = res.error ? false : true;
         if (!res.error){
-          this.cargarMapaDesdeLocalStorage();
           localStorage.removeItem('mapaProductos');
+          this.cargarMapaDesdeLocalStorage();
+          this.functionsUtils.navigateOption(this.router, '', new class implements NavigationExtras {});
         }
       } , 2000);
 
@@ -135,7 +151,6 @@ export class CarritoComprasComponent implements OnInit{
       } , 1500);
       console.error('Error al consumir Post');
     });
-
   }
 
   eliminar(productId: number): void {
@@ -181,6 +196,16 @@ export class CarritoComprasComponent implements OnInit{
       this.form.controls.sucursal.setValue(this.listaSucursalesFiltrada[0].id);
     }
   }
+
+  closeModalMetodoPago() {
+    this.mostrarModal = false;
+  }
+
+  resetFormMetodoPago(){
+
+  }
+
+
 }
 
 
