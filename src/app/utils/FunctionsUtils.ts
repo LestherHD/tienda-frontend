@@ -191,7 +191,6 @@ export class FunctionsUtils {
   }
 
   campoRequerido(form: FormGroup, name: string, tipo: string): number {
-    console.log('entra: ', name);
     const value = form.controls[name].value;
 
     if (value !== null && value !== undefined) {
