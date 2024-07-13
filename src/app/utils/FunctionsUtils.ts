@@ -1,7 +1,6 @@
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {ChangeDetectorRef, Injectable} from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
-import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'

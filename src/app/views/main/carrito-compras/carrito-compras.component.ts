@@ -127,7 +127,7 @@ export class CarritoComprasComponent implements OnInit{
       this.form.controls.telefono.value, this.form.controls.departamento.value, objSucursal, this.form.controls.metodoPago.value,
       this.listResponse, this.totalCompra);
 
-    this.services.saveEntityMethod('productos', 'savePedido', pedido).subscribe( res => {
+    this.services.saveEntity('pedidos', pedido).subscribe( res => {
       this.type = res.error ? 'danger' : 'success';
       this.mensaje = res.mensaje;
       this.deshabilitarBotones = true;
