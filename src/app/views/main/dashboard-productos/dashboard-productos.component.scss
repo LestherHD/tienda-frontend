@@ -1,3 +1,17 @@
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  color: rgb(0, 179, 186, 0.9) !important;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+  background-color: rgb(0, 179, 186, 0.9) !important;
+  border-color: rgb(0, 179, 186, 0.5) !important;;
+}
+
+button ::ng-deep {
+  background-color: rgb(0, 179, 186) !important;
+  border-color: rgb(0, 179, 186) !important;
+}
+
 .card-container {
   display: grid;
   gap: 1rem;

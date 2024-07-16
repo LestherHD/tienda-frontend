@@ -19,7 +19,7 @@
         <input class="form-control input-personalizado" placeholder="Buscar..." [formControl]="valorBusqueda"
                (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">
         <div class="input-group-append">
-          <button cButton color="warning" (click)="filtrar()" class="text-white btn-alto-ancho">
+          <button cButton  style="background-color: white; border-color: rgb(0, 0, 0, 0.4); color: rgb(0, 0, 0, 0.4) !important;" (click)="filtrar()" class="text-white btn-alto-ancho">
             <svg cIcon name="cilZoom"></svg>
           </button>
         </div>

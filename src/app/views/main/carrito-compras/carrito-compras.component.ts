@@ -120,6 +120,7 @@ export class CarritoComprasComponent implements OnInit{
   }
 
   finalizarCompra(){
+    this.deshabilitarBotones = true;
     const objSucursal: Sucursales = this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0 ?
       this.listaSucursalesFiltrada.find(x => x.id === Number(this.form.controls.sucursal.value)) : null;
 
@@ -130,7 +131,6 @@ export class CarritoComprasComponent implements OnInit{
     this.services.saveEntity('pedidos', pedido).subscribe( res => {
       this.type = res.error ? 'danger' : 'success';
       this.mensaje = res.mensaje;
-      this.deshabilitarBotones = true;
       this.mostrarMensaje = true;
       setTimeout(() => {
         this.mostrarMensaje = false;
@@ -143,6 +143,7 @@ export class CarritoComprasComponent implements OnInit{
       } , 2000);
 
     }, error1 => {
+      this.deshabilitarBotones = false;
       this.type = 'danger';
       this.mensaje = 'Ha ocurrido un error al insertar los datos';
       this.mostrarMensaje = true;
