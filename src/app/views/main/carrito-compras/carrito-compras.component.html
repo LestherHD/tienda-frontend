@@ -22,7 +22,7 @@
             <tr *ngFor="let item of listResponse">
               <td class="align-center" ><img cCardImg="top" [src]="item.producto.imagen" class="fixed-size-img" /></td>
               <td class="align-center">{{item.producto.nombre}}</td>
-              <td class="align-center">{{item.descripcion}}</td>
+              <td class="text-start" [innerHTML]="item.descripcion"></td>
               <td class="align-center">{{item.cantidad}}</td>
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio)}}</td>
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio * item.cantidad)}}</td>

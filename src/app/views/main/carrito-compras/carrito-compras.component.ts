@@ -181,8 +181,19 @@ export class CarritoComprasComponent implements OnInit{
           const producto = this.mapaProductos[key].producto;
           const caracteristicas = this.mapaProductos[key].caracteristicas;
           const descripcion = producto.descripcion;
-          console.log('caracteristicas: ', caracteristicas);
-          const detalle = new DetallePedido(null, producto, descripcion, cantidad, producto.precio);
+
+          var descripcionFinal = descripcion;
+
+          if (caracteristicas){
+            descripcionFinal += '<br><span class="fw-bold"> Características:</span> ';
+            Object.entries(caracteristicas).forEach(([clave, valor]) => {
+              descripcionFinal += ' <br><span class="fw-semibold">' + clave + ': </span>'+valor + ',';
+            });
+            descripcionFinal = descripcionFinal.substring(0, descripcionFinal.length - 1);
+          }
+
+
+          const detalle = new DetallePedido(null, null, descripcionFinal, cantidad, producto.precio, producto);
           this.listResponse.push(detalle);
           this.totalCompra += Number((cantidad * producto.precio));
         }
