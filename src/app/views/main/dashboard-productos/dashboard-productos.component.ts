@@ -62,7 +62,7 @@ export class DashboardProductosComponent implements OnInit{
   getValuesByPage(valorBusqueda: string, pageValue: any, sizeValue: any): void{
     this.pagination.page = pageValue + 1;
     const request = new ProductosRequestDTO(new Productos(null, valorBusqueda, valorBusqueda, null, null,
-      null,null, null, null, null), pageValue, sizeValue);
+      null,null, null, null, 'A'), pageValue, sizeValue);
 
     this.service.mostrarSpinner = true;
     this.service.getFromEntityByFilter('productos', request).subscribe( res => {

@@ -107,7 +107,7 @@ export class CarritoComprasComponent implements OnInit{
   }
 
   realizarCompra() {
-
+    this.services.mostrarSpinner = true;
     if(this.form.controls.metodoPago.value === 'E'){
       this.finalizarCompra();
     } else if (this.form.controls.metodoPago.value === 'T'){
@@ -123,10 +123,16 @@ export class CarritoComprasComponent implements OnInit{
     this.deshabilitarBotones = true;
     const objSucursal: Sucursales = this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0 ?
       this.listaSucursalesFiltrada.find(x => x.id === Number(this.form.controls.sucursal.value)) : null;
-
+    const lstDetalle: DetallePedido[] = JSON.parse(JSON.stringify(this.listResponse));
+    if (lstDetalle){
+      lstDetalle.forEach(x=>{
+        x.producto.imagen = '';
+        x.producto.imageSrc = '';
+      });
+    }
     const pedido = new Pedidos(null, 'N', this.form.controls.nombres.value, this.form.controls.apellidos.value,
       this.form.controls.telefono.value, this.form.controls.departamento.value, objSucursal, this.form.controls.metodoPago.value,
-      this.listResponse, this.totalCompra);
+      lstDetalle, this.totalCompra);
 
     this.services.saveEntity('pedidos', pedido).subscribe( res => {
       this.type = res.error ? 'danger' : 'success';
@@ -135,6 +141,7 @@ export class CarritoComprasComponent implements OnInit{
       setTimeout(() => {
         this.mostrarMensaje = false;
         this.deshabilitarBotones = res.error ? false : true;
+        this.services.mostrarSpinner = false;
         if (!res.error){
           localStorage.removeItem('mapaProductos');
           this.cargarMapaDesdeLocalStorage();
@@ -144,6 +151,7 @@ export class CarritoComprasComponent implements OnInit{
 
     }, error1 => {
       this.deshabilitarBotones = false;
+      this.services.mostrarSpinner = false;
       this.type = 'danger';
       this.mensaje = 'Ha ocurrido un error al insertar los datos';
       this.mostrarMensaje = true;
@@ -217,10 +225,7 @@ export class CarritoComprasComponent implements OnInit{
 
   }
 
-
 }
-
-
 
 interface DetalleProducto {
   producto: Productos;
