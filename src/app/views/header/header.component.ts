@@ -8,6 +8,7 @@ import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {Services} from '../../services/Services';
 import {NavigationExtras, Router} from '@angular/router';
 import {Productos} from '../../bo/Productos';
+import {DataUtils} from '../../utils/DataUtils';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit{
 
 
   constructor(public functionsUtils: FunctionsUtils, public services: Services,
-              private router: Router) {
+              private router: Router, public dataUtils: DataUtils) {
   }
 
   ngOnInit(): void {

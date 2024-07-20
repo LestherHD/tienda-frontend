@@ -1,0 +1,1 @@
+var o=class{constructor(i,t,s,h,a,e,n,p,g,d){this.id=i,this.nombre=t,this.descripcion=s,this.precio=h,this.imagen=a,this.tipoProducto=e,this.rangoPrecioInicio=n,this.rangoPrecioFin=p,this.caracteristicas=g,this.estado=d}};var c=class{constructor(i,t,s){this.producto=i,this.page=t,this.size=s}};export{o as a,c as b};
