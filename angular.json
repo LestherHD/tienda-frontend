@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tienda-virtual-frontend": {
+    "tienda-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tienda-virtual-frontend:build:production"
+              "buildTarget": "tienda-frontend:build:production"
             },
             "development": {
-              "buildTarget": "tienda-virtual-frontend:build:development"
+              "buildTarget": "tienda-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tienda-virtual-frontend:build"
+            "buildTarget": "tienda-frontend:build"
           }
         },
         "test": {
