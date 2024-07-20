@@ -8,7 +8,7 @@ export class DataUtils {
   // local
   // assetsRaiz = '';
   // deploy
-  assetsRaiz = '/tienda-virtual-frontend';
+  assetsRaiz = '/tienda-frontend';
 
   listaDepartamentos: { codigo: string, descripcion: string }[] = [
     { codigo: '1', descripcion: 'Guatemala' },
