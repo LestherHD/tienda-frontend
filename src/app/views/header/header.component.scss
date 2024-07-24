@@ -1,6 +1,7 @@
 .header{
   background: rgb(0, 179, 186);
   height: 16vh !important;
+  min-height: 150px;
   overflow-x: hidden;
   //width: 100vw;
 }
@@ -15,11 +16,13 @@
 
 .btn-alto-ancho{
   height: 5vh;
+  min-height: 40px;
   width: 50px;
 }
 
 .input-personalizado {
   height: 5vh; /* Altura deseada */
+  min-height: 40px;
 }
 
 .input-group-custom{
@@ -30,6 +33,7 @@
   margin: 0 auto;
   width: 60%;
   height: 13vh;
+  min-height: 130px;
 }
 
 .logo {
@@ -37,6 +41,7 @@
   margin-top: 50px;
   background-color: white;
   height: 7.5vh;
+  min-height: 50px;
   width: 14vw;
   text-align: center;
   align-content: center;
@@ -46,6 +51,7 @@
 .logo-img {
   height: 6vh;
   width: 13vw;
+  min-height: 40px;
 }
 
 .button-group {
@@ -75,6 +81,7 @@
 .shopping-cart {
   position: relative;
   height: 6vh;
+  min-height: 40px;
   width: 4vw;
   margin-right: 30px;
   margin-top: 60px;
@@ -82,6 +89,7 @@
 
 .shopping-cart button {
   height: 6vh;
+  min-height: 40px;
   width: 4vw;
   margin-right: 50px;
 }
@@ -89,6 +97,7 @@
 .shopping-cart svg {
   height: 3vh;
   width: 2vw;
+  min-height: 30px;
 }
 
 @media (min-width: 1351px) {

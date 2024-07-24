@@ -124,7 +124,7 @@
       </div>
     </c-card-body>
     <div class="justify-content-center d-flex mt-2" style="padding-bottom: 20px;">
-      <button (click)="realizarCompra()" [disabled]="!form || (form && form.invalid) || deshabilitarBotones" cButton color="primary">
+      <button class="boton-comprar" (click)="realizarCompra()" [disabled]="!form || (form && form.invalid) || deshabilitarBotones" cButton color="primary">
         Finalizar Compra
       </button>
     </div>

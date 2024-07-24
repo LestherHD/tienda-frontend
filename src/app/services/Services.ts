@@ -23,8 +23,6 @@ export class Services {
 
   private searchSubject = new BehaviorSubject<FormControl>(new FormControl());
   search$ = this.searchSubject.asObservable();
-  // demo heroku
-  // URL = 'https://panaderia-backend.herokuapp.com';
 
   constructor(private http: HttpClient) {
 
