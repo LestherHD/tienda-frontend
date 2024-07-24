@@ -3,6 +3,7 @@
   height: 16vh !important;
   min-height: 150px;
   overflow-x: hidden;
+  overflow-y: hidden;
   //width: 100vw;
 }
 
@@ -42,16 +43,16 @@
   background-color: white;
   height: 7.5vh;
   min-height: 50px;
-  width: 14vw;
+  width: 13vw;
   text-align: center;
   align-content: center;
   border-radius: 2px;
 }
 
 .logo-img {
-  height: 6vh;
+  height: 7.5vh;
   width: 13vw;
-  min-height: 40px;
+  min-height: 50px;
 }
 
 .button-group {
@@ -131,11 +132,13 @@
 
   .logo {
     margin-left: 2vw;
-    margin-top: 50px;
+    margin-top: 40px;
+    height: 10vh;
+    width: 13vw;
   }
 
   .logo-img {
-    height: 6vh;
+    height: 10vh;
     width: 13vw;
   }
 
@@ -211,13 +214,13 @@
   .logo {
     margin-left: 2vw;
     margin-top: 50px;
-    height: 7vh;
-    width: 15vw;
+    height: 9vh;
+    width: 14vw;
   }
 
   .logo-img {
-    height: 5.5vh;
-    width: 13vw;
+    height: 9vh;
+    width: 14vw;
   }
 
   .button-group {
@@ -288,15 +291,15 @@
   }
 
   .logo {
-    margin-left: 1vw;
+    margin-left: 3vw;
     margin-top: 50px;
-    height: 7vh;
-    width: 20vw;
+    height: 9vh;
+    width: 15vw;
   }
 
   .logo-img {
-    height: 5vh;
-    width: 18.5vw;
+    height: 9vh;
+    width: 15vw;
   }
 
   .button-group {
@@ -349,7 +352,7 @@
   }
 
   .header{
-    height: 20vh !important;
+    height: 22vh !important;
   }
 
   .btn-alto-ancho{
@@ -374,14 +377,14 @@
   .logo {
     align-items: center;
     text-align: center;
-    height: 7vh;
+    height: 10vh;
     width: 27.5vw;
-    margin: 0 auto;
+    margin: auto auto -10px auto ;
   }
 
   .logo-img {
-    height: 5vh;
-    width: 25vw;
+    height: 10vh;
+    width: 27.5vw;
   }
 
   .button-group {
@@ -433,7 +436,8 @@
   }
 
   .header{
-    height: 20vh !important;
+    height: 21vh !important;
+    max-height: 21vh;
   }
 
   .btn-alto-ancho{
@@ -452,20 +456,21 @@
   .ancho-personalizado-busqueda{
     margin: 0 auto;
     width: 90%;
-    height: 25vh;
+    height: 21vh;
+    max-height: 21vh;
   }
 
   .logo {
     align-items: center;
     text-align: center;
-    height: 6vh;
+    height: 9vh;
     width: 33vw;
-    margin: 0 auto;
+    margin: auto auto -10px auto;
   }
 
   .logo-img {
-    height: 4vh;
-    width: 28vw;
+    height: 9vh;
+    width: 33vw;
   }
 
   .button-group {
