@@ -35,6 +35,7 @@ import {DataUtils} from '../../../utils/DataUtils';
 import {SelectComponent} from '../../forms/select/select.component';
 import {Sucursales} from '../../../bo/Sucursales';
 import {Pedidos} from '../../../bo/Pedidos';
+import {ModalCrudComponent} from '../../utils/modal-crud/modal-crud.component';
 
 function onlyNumbersAndSpaces(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
@@ -52,7 +53,7 @@ function onlyNumbersAndSpaces(control: AbstractControl): ValidationErrors | null
   imports: [CardComponent, CardBodyComponent, ButtonDirective, CustomSpinnerComponent, NgbPaginationModule,
     CommonModule, FormControlDirective, ReactiveFormsModule, ButtonDirective, ButtonsComponent, IconComponent, IconDirective,
     AlertComponent, ContainerComponent, FormFeedbackComponent, FormFloatingDirective, FormsModule, TableDirective, InputGroupComponent,
-  SelectComponent, FormSelectDirective],
+  SelectComponent, FormSelectDirective, ModalCrudComponent],
   templateUrl: './carrito-compras.component.html',
   styleUrl: './carrito-compras.component.scss'
 })
@@ -66,7 +67,7 @@ export class CarritoComprasComponent implements OnInit{
     metodoPago: any;}>;
   listaSucursales: Sucursales[];
   listaSucursalesFiltrada: Sucursales[];
-  listaMetodoPago: any = [{id: 'E', nombre: 'Efectivo'}, {id: 'T', nombre: 'Tarjeta'}];
+  listaMetodoPago: any = [{id: 'E', nombre: 'Pago contra entrega'}];
   type: string;
   mensaje: string;
   deshabilitarBotones = false;
@@ -84,6 +85,7 @@ export class CarritoComprasComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.services.isDashboardUrl = false;
     this.totalCompra = 0;
     this.cargarMapaDesdeLocalStorage();
     this.services.mostrarSpinner = false;
@@ -109,7 +111,8 @@ export class CarritoComprasComponent implements OnInit{
   realizarCompra() {
     this.services.mostrarSpinner = true;
     if(this.form.controls.metodoPago.value === 'E'){
-      this.finalizarCompra();
+      this.mostrarModal = true;
+      this.services.mostrarSpinner = false;
     } else if (this.form.controls.metodoPago.value === 'T'){
 
     }
@@ -138,10 +141,10 @@ export class CarritoComprasComponent implements OnInit{
       this.type = res.error ? 'danger' : 'success';
       this.mensaje = res.mensaje;
       this.mostrarMensaje = true;
+      this.services.mostrarSpinner = false;
       setTimeout(() => {
         this.mostrarMensaje = false;
         this.deshabilitarBotones = res.error ? false : true;
-        this.services.mostrarSpinner = false;
         if (!res.error){
           localStorage.removeItem('mapaProductos');
           this.cargarMapaDesdeLocalStorage();
@@ -200,7 +203,6 @@ export class CarritoComprasComponent implements OnInit{
             descripcionFinal = descripcionFinal.substring(0, descripcionFinal.length - 1);
           }
 
-
           const detalle = new DetallePedido(null, null, descripcionFinal, cantidad, producto.precio, producto);
           this.listResponse.push(detalle);
           this.totalCompra += Number((cantidad * producto.precio));
@@ -217,7 +219,7 @@ export class CarritoComprasComponent implements OnInit{
     }
   }
 
-  closeModalMetodoPago() {
+  closeModal() {
     this.mostrarModal = false;
   }
 
@@ -225,6 +227,11 @@ export class CarritoComprasComponent implements OnInit{
 
   }
 
+  confirmarCompra() {
+    this.services.mostrarSpinner = true;
+    this.deshabilitarBotones = true;
+    this.finalizarCompra();
+  }
 }
 
 interface DetalleProducto {

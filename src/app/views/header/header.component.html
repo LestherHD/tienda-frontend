@@ -7,12 +7,21 @@
     <div class="ancho-personalizado-busqueda">
       <div class="button-group">
         <div class="button-container" (click)="setActive('inicio')">
-          <button class="border-0 text-white btn" (click)="viajarInicio()">Inicio</button>
+          <button class="border-0 text-white btn" (click)="filtrarBotonInicio()">Inicio</button>
           <div class="underline text-white" *ngIf="services.activeButtonHeader === 'inicio'"></div>
         </div>
         <div class="button-container" (click)="setActive('tiposProducto')">
-          <button class="border-0 text-white btn" >Tipos de producto</button>
-          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+          <c-dropdown direction="center" (mouseenter)="isDropdownOpen = true" (mouseleave)="isDropdownOpen = false">
+            <button cButton cDropdownToggle style="border: none; background: none;" (click)="filtrarBotonInicio()">
+              Tipos de producto
+            </button>
+            <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+            <ul [ngClass]="{'dropdown-menu': true, 'show': isDropdownOpen}">
+              <li *ngFor="let obj of listaTipoProducto">
+                <button (click)="filtrarProducto(obj)" cDropdownItem>{{obj.nombre}}</button>
+              </li>
+            </ul>
+          </c-dropdown>
         </div>
       </div>
       <div class="input-group input-group-custom">
@@ -34,7 +43,6 @@
   </div>
 </div>
 
-
 <!--Media queries pequeños abajo o igual a 768 de ancho-->
 <div class="headerPequenio">
   <div class="header">
@@ -44,12 +52,21 @@
       </div>
       <div class="button-group">
         <div class="button-container" (click)="setActive('inicio')">
-          <button class="border-0 text-white btn" (click)="viajarInicio()">Inicio</button>
+          <button class="border-0 text-white btn" (click)="filtrarBotonInicio()">Inicio</button>
           <div class="underline text-white" *ngIf="services.activeButtonHeader === 'inicio'"></div>
         </div>
         <div class="button-container" (click)="setActive('tiposProducto')">
-          <button class="border-0 text-white btn" >Tipos de producto</button>
-          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+          <c-dropdown direction="center" (mouseenter)="isDropdownOpen = true" (mouseleave)="isDropdownOpen = false">
+            <button cButton cDropdownToggle style="border: none; background: none;" (click)="filtrarBotonInicio()">
+              Tipos de producto
+            </button>
+            <div class="underline text-white" *ngIf="services.activeButtonHeader === 'tiposProducto'"></div>
+            <ul [ngClass]="{'dropdown-menu': true, 'show': isDropdownOpen}">
+              <li *ngFor="let obj of listaTipoProducto">
+                <button (click)="filtrarProducto(obj)" cDropdownItem>{{obj.nombre}}</button>
+              </li>
+            </ul>
+          </c-dropdown>
         </div>
         <div class="shopping-cart button-container">
           <button (click)="viajarACarrito()" color="dark" class="text-white border-0 position-relative mx-2 btn">
@@ -57,9 +74,7 @@
             <c-badge *ngIf="this.services.cantidadProductosCarrito > 0" color="danger" position="top-end" shape="rounded-pill">{{this.services.cantidadProductosCarrito}}</c-badge>
           </button>
         </div>
-
       </div>
-
       <div class="input-group input-group-custom">
         <input class="form-control input-personalizado"  placeholder="Buscar..." [formControl]="valorBusqueda"
                (blur)="functionsUtils.removeSpacesFormControl(valorBusqueda)" (keyup.enter)="filtrar()">

@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
-  <c-card class="my-5 ancho-personalizado" *ngIf="listResponse && listResponse.length">
+  <h3 class="mt-4 tittle">{{tipoProducto ? tipoProducto.nombre : 'General'}}</h3>
+  <c-card class="my-3 ancho-personalizado" *ngIf="listResponse && listResponse.length">
     <c-card-body class="card-container" >
       <c-card class="card-item" *ngFor="let obj of listResponse" >
         <div (click)="viajarADetalle(obj)">
@@ -7,7 +8,7 @@
             <span cCardTitle class="fw-bold m-2 card-title-custom">{{obj.nombre}}</span>
           </div>
           <div class="justify-content-center d-flex">
-            <img cCardImg="top" [src]="obj.imagen" class="fixed-size-img" />
+            <img cCardImg="top" [src]="obj.imagen" style="border-radius: 3px;" class="fixed-size-img" />
           </div>
           <c-card-body class="card-body-custom text-center">
             <p cCardText>
@@ -34,7 +35,8 @@
   <c-card class="my-5 ancho-personalizado" *ngIf="!listResponse || (listResponse && listResponse.length === 0)">
     <c-card-body class="d-flex justify-content-center flex-column align-items-center align-content-center" >
       <h4>No pudimos encontrar el producto que buscas</h4>
-      <p>Búsqueda realizada: <span style="font-weight: bold">{{valorBusquedaBK ? valorBusquedaBK.value : ''}}</span></p>
+      <p *ngIf="!tipoProducto">Búsqueda realizada: <span style="font-weight: bold">{{valorBusquedaBK ? valorBusquedaBK.value : ''}}</span></p>
+      <p *ngIf="tipoProducto">Búsqueda realizada por Tipo de producto: <span style="font-weight: bold">{{tipoProducto ? tipoProducto.nombre : ''}}</span></p>
     </c-card-body>
   </c-card>
 </div>

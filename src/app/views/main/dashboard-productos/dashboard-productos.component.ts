@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ButtonDirective, CardBodyComponent, CardComponent, FormControlDirective} from '@coreui/angular';
 import {Services} from '../../../services/Services';
 import {Productos} from '../../../bo/Productos';
@@ -12,6 +12,9 @@ import {IconComponent, IconDirective} from '@coreui/icons-angular';
 import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {NavigationExtras, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {TipoProducto} from '../../../bo/TipoProducto';
+import {Subject, takeUntil} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard-productos',
@@ -21,13 +24,17 @@ import {Title} from '@angular/platform-browser';
   templateUrl: './dashboard-productos.component.html',
   styleUrl: './dashboard-productos.component.scss'
 })
-export class DashboardProductosComponent implements OnInit{
+export class DashboardProductosComponent implements OnInit, OnDestroy {
 
   listResponse: Productos[];
   pagination: NgbPagination;
 
   valorBusqueda: FormControl;
   valorBusquedaBK: FormControl;
+  tipoProducto: TipoProducto;
+
+  private destroy$ = new Subject<TipoProducto>();
+  private destroySearch$ = new Subject<String>();
 
   constructor(private service: Services, public functionsUtils: FunctionsUtils, private router: Router,
               private titleService: Title) {
@@ -38,31 +45,59 @@ export class DashboardProductosComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.service.isDashboardUrl = true;
+    this.valorBusqueda = new FormControl('', Validators.required)
+    this.valorBusquedaBK = new FormControl('', Validators.required);
 
     this.titleService.setTitle('Holandesa');
-    this.service.search$.subscribe(value => {
-      this.valorBusqueda = value;
+    this.service.search$
+      .pipe(
+        takeUntil(this.destroySearch$),
+        filter(value => value !== null))
+      .subscribe(value => {
+      this.valorBusqueda.setValue(value);
       this.filtrar();
     });
 
-    this.valorBusqueda = new FormControl('', Validators.required);
-    this.getValuesByPage('', this.pagination.page, this.pagination.pageSize);
+    this.service.productSearch$
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(value => value !== null)) // O cualquier otra condición)
+      .subscribe( value => {
+      this.valorBusqueda.setValue('');
+      this.tipoProducto = value;
+      this.filtrarProducto();
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+
+    this.destroySearch$.next(null);
+    this.destroySearch$.complete();
   }
 
   filtrar(): void {
     this.valorBusquedaBK = new FormControl(this.valorBusqueda.value, Validators.required);
-    this.getValuesByPage(this.valorBusquedaBK.value.toString().trim(), 0, this.pagination.pageSize);
+    this.tipoProducto = null;
+    this.getValuesByPage(this.valorBusquedaBK.value, this.tipoProducto, 0, this.pagination.pageSize);
+  }
+
+  filtrarProducto(): void {
+    this.valorBusquedaBK = new FormControl(this.valorBusqueda.value, Validators.required);
+    this.getValuesByPage(this.valorBusquedaBK.value.toString().trim(), this.tipoProducto,0, this.pagination.pageSize);
   }
 
   changePage(event: any): void {
     this.pagination.page = event;
-    this.getValuesByPage(this.valorBusquedaBK.value.toString().trim(), this.pagination.page, this.pagination.pageSize);
+    this.getValuesByPage(this.valorBusquedaBK.value.toString().trim(), this.tipoProducto, this.pagination.page, this.pagination.pageSize);
   }
 
-  getValuesByPage(valorBusqueda: string, pageValue: any, sizeValue: any): void{
+  getValuesByPage(valorBusqueda: string, tipoProducto: TipoProducto, pageValue: any, sizeValue: any): void{
     this.pagination.page = pageValue + 1;
     const request = new ProductosRequestDTO(new Productos(null, valorBusqueda, valorBusqueda, null, null,
-      null,null, null, null, 'A'), pageValue, sizeValue);
+      tipoProducto,null, null, null, 'A'), pageValue, sizeValue);
 
     this.service.mostrarSpinner = true;
     this.service.getFromEntityByFilter('productos', request).subscribe( res => {

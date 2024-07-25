@@ -12,6 +12,11 @@ button ::ng-deep {
   border-color: rgb(0, 179, 186) !important;
 }
 
+.tittle{
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 25px;
+}
+
 .card-container {
   display: grid;
   gap: 1rem;
@@ -45,6 +50,12 @@ button ::ng-deep {
 }
 
 @media (min-width: 1351px) {
+
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 25px;
+  }
+
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
   }
@@ -78,6 +89,12 @@ button ::ng-deep {
 
 /* Dispositivos grandes (desktops, laptops grandes) */
 @media (max-width: 1350px) {
+
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 25px;
+  }
+
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   }
@@ -111,6 +128,12 @@ button ::ng-deep {
 
 /* Dispositivos medianos (laptops, tablets en paisaje) */
 @media (max-width: 992px) {
+
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 24px;
+  }
+
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
   }
@@ -143,6 +166,11 @@ button ::ng-deep {
 
 /* Dispositivos pequeños (tablets en retrato, smartphones grandes) */
 @media (max-width: 768px) {
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 22px;
+  }
+
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
   }
@@ -173,6 +201,12 @@ button ::ng-deep {
 
 /* Dispositivos extra pequeños (smartphones) */
 @media (max-width: 576px) {
+
+  .tittle{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 23px;
+  }
+
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   }

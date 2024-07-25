@@ -29,7 +29,7 @@ export class DetalleProductoComponent implements OnInit{
   idProduct: any;
   listaCaracteristicas: Caracteristicas[];
   agregado: boolean;
-  mapaProductos: Record<number, DetalleProducto> = {};
+  mapaProductos: Record<string, DetalleProducto> = {};
   cantidad: FormControl;
   caracteristicasSeleccionadas: { [nombre: string]: any } = {};
   filteredCaracteristicas: Caracteristicas[] = [];
@@ -41,6 +41,7 @@ export class DetalleProductoComponent implements OnInit{
 
   ngOnInit(): void {
     // localStorage.removeItem('mapaProductos');
+    this.service.isDashboardUrl = false;
 
     this.route.queryParams.subscribe( paramMap => {
       this.idProduct = paramMap['idProduct'];
@@ -98,13 +99,13 @@ export class DetalleProductoComponent implements OnInit{
     return list;
   }
 
-
   agregarACarrito(): void {
     this.agregado = true;
-    if (this.mapaProductos[this.producto.id]) {
-      this.mapaProductos[this.producto.id].cantidad += Number(this.cantidad.value);
+    const valor: string = this.producto.id + JSON.stringify(this.caracteristicasSeleccionadas);
+    if (this.mapaProductos[valor]) {
+      this.mapaProductos[valor].cantidad += Number(this.cantidad.value);
     } else {
-      this.mapaProductos[this.producto.id] = {
+      this.mapaProductos[valor] = {
         producto: this.producto,
         cantidad: Number(this.cantidad.value),
         caracteristicas: this.caracteristicasSeleccionadas

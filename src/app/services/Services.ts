@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UrlField} from '../bo/UrlField';
-import {Observable, BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import * as CryptoJS from 'crypto-js';
-import {FormControl} from '@angular/forms';
+import {TipoProducto} from '../bo/TipoProducto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +20,24 @@ export class Services {
   public deshabilitarBotones: Boolean;
   public activeButtonHeader: string = '';
   public cantidadProductosCarrito: number = 0;
+  public isDashboardUrl: boolean = false;
 
-  private searchSubject = new BehaviorSubject<FormControl>(new FormControl());
+  private searchSubject = new BehaviorSubject<String>(null);
   search$ = this.searchSubject.asObservable();
+
+  private productSearchSubject = new BehaviorSubject<TipoProducto>(null);
+  productSearch$ = this.productSearchSubject.asObservable();
 
   constructor(private http: HttpClient) {
 
   }
 
-
-
-  setSearchValue(value: FormControl) {
+  setSearchValue(value: String) {
     this.searchSubject.next(value);
+  }
+
+  setProductSearchValue(value: TipoProducto) {
+    this.productSearchSubject.next(value);
   }
 
   clicInformacionUsuario() {

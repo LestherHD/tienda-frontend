@@ -185,6 +185,10 @@ export class FunctionsUtils {
 
   }
 
+  navigateOptionUrl(router: Router, opcion: string): void {
+    router.navigateByUrl(opcion);
+  }
+
   navigateOption(router: Router, opcion: string, navigationExtras: NavigationExtras): void {
     router.navigate([opcion], navigationExtras);
   }
