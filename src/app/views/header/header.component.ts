@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     this.isDropdownOpen = false;
     this.valorBusqueda = new FormControl('', Validators.required);
-    this.filtrar();
+    // this.filtrar();
     this.cargarMapaDesdeLocalStorage();
     this.services.getAllItemsFromEntity('tipoProducto').subscribe( (res: TipoProducto[]) => {
       this.listaTipoProducto = res;
@@ -87,6 +87,10 @@ export class HeaderComponent implements OnInit{
   }
 
   viajarInicio() {
+    this.functionsUtils.navigateOptionUrl(this.router, 'products');
+  }
+
+  viajarMain() {
     this.functionsUtils.navigateOptionUrl(this.router, 'dashboard');
   }
 

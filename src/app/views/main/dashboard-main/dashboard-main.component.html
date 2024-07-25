@@ -1,0 +1,56 @@
+<div class="image-container">
+  <img src="/assets/images/header.png" class="image" />
+</div>
+
+
+<div class="textos-grandes col-12 row d-flex justify-content-center mt-5">
+  <div class="col-auto">
+    <span class="texto-izquierda">Somos Familia</span>
+  </div>
+  <div class="col-5 mt-2">
+    <span class="texto-derecha justify-content-start d-flex">Soñamos con ganarnos la confianza de más hogares guatemaltecos.
+      Compartiendo momentos inolvidables, llenos de alegría junto a los tuyos.</span>
+  </div>
+</div>
+
+<div class="textos-pequenios col-12 row d-flex justify-content-center mt-5" style="margin: 0 auto;">
+  <div class="col-auto">
+    <span class="texto-izquierda">Somos Familia</span>
+  </div>
+  <div class="col-8 mt-2">
+    <span class="texto-derecha justify-content-start d-flex text-center">Soñamos con ganarnos la confianza de más hogares guatemaltecos.
+      Compartiendo momentos inolvidables, llenos de alegría junto a los tuyos.</span>
+  </div>
+</div>
+
+
+<br>
+<div class="carousel-custom d-flex justify-content-center mt-lg-4" *ngIf="listResponse && listResponse.length > 0">
+  <c-carousel dark="true"  [interval]="0">
+    <c-carousel-indicators></c-carousel-indicators>
+    <c-carousel-inner>
+      <c-carousel-item *ngFor="let obj of listResponse">
+        <c-card-body class="card-container" >
+          <c-card class="card-item" >
+            <div (click)="viajarADetalle(obj)">
+              <br>
+              <div class="justify-content-center d-flex">
+                <img cCardImg="top" [src]="obj.producto.imagen" style="border-radius: 3px;" class="fixed-size-img" />
+              </div>
+              <br>
+              <div class="justify-content-center d-flex">
+                <span cCardTitle class="mb-2 card-title-custom">{{obj.producto.nombre}}</span>
+              </div>
+              <div class="justify-content-center d-flex" style="padding-bottom: 50px;">
+                <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.producto.precio)}}</button>
+              </div>
+            </div>
+          </c-card>
+        </c-card-body>
+      </c-carousel-item>
+    </c-carousel-inner>
+    <c-carousel-control class="carousel-control-custom" [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+    <c-carousel-control class="carousel-control-custom" [routerLink] caption="Next" direction="next"></c-carousel-control>
+  </c-carousel>
+</div>
+

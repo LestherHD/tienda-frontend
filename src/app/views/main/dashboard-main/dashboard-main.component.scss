@@ -1,0 +1,282 @@
+button ::ng-deep {
+  background-color: rgb(0, 179, 186) !important;
+  border-color: rgb(0, 179, 186) !important;
+}
+
+.image-container {
+  position: relative;
+  width: 50vw;
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+.image {
+  margin-top: -1px;
+  height: 35vh;
+  width: 100%; /* La imagen ocupa el 100% del contenedor */
+  display: block; /* Elimina el espacio debajo de la imagen */
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+}
+
+.texto-izquierda{
+  font-size: 95px;
+  font-family: Varela Round;
+  color: rgb(0, 179, 186);
+}
+
+.texto-derecha{
+  font-size: 18px;
+  font-family: Varela Round;
+  color: rgb(0, 179, 186, 0.6);
+  line-height: 2;
+}
+
+.carousel-custom{
+  width: 500px;
+  margin: auto auto 50px auto;
+}
+
+.card-container {
+  display: grid;
+}
+
+.card-item{
+  border-color: rgba(0, 0, 0, 0.1);
+  background: white;
+  color: rgb(0, 179, 186);
+  width: 500px;
+  max-height: 600px;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.001s ease;
+}
+
+.card-title-custom{
+  font-size: 18px;
+  font-family: Varela Round;
+  font-weight: normal;
+}
+
+.card-body-custom{
+  height: 100px;
+}
+
+.card-body-custom p{
+  font-size: 12px;
+  max-width: 17vw;
+  height: 100px;
+  overflow-y: scroll;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.fixed-size-img {
+  width: 300px;
+  height: 250px;
+}
+
+@media (min-width: 1351px) {
+
+  .textos-grandes{
+    display: flex !important;
+  }
+
+  .textos-pequenios{
+    display: none !important;
+  }
+
+  .fixed-size-img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .image-container {
+    position: relative;
+    width: 55vw;
+    margin: 0 auto; /* Centra el contenedor */
+  }
+
+  .carousel-custom{
+    width: 650px;
+    margin: auto auto 50px auto;
+  }
+
+  .card-item{
+    width: 650px;
+    max-height: 600px;
+  }
+
+}
+
+/* Dispositivos grandes (desktops, laptops grandes) */
+@media (max-width: 1350px) {
+
+  .textos-grandes{
+    display: flex !important;
+  }
+
+  .textos-pequenios{
+    display: none !important;
+  }
+
+  .fixed-size-img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .image-container {
+    position: relative;
+    width: 60vw;
+    margin: 0 auto; /* Centra el contenedor */
+  }
+
+  .carousel-custom{
+    width: 650px;
+    margin: auto auto 50px auto;
+  }
+
+  .card-item{
+    width: 650px;
+    max-height: 600px;
+  }
+}
+
+/* Dispositivos medianos (laptops, tablets en paisaje) */
+@media (max-width: 992px) {
+
+  .textos-grandes{
+    display: flex !important;
+  }
+
+  .textos-pequenios{
+    display: none !important;
+  }
+
+  .fixed-size-img {
+    width: 300px;
+    height: 250px;
+  }
+
+  .image-container {
+    position: relative;
+    width: 75vw;
+    margin: 0 auto; /* Centra el contenedor */
+  }
+
+  .carousel-custom{
+    width: 650px;
+    margin: auto auto 50px auto;
+  }
+
+  .card-item{
+    width: 650px;
+    max-height: 600px;
+  }
+}
+
+/* Dispositivos pequeños (tablets en retrato, smartphones grandes) */
+@media (max-width: 768px) {
+
+  .textos-grandes{
+    display: none !important;
+  }
+
+  .textos-pequenios{
+    display: flex !important;
+  }
+
+  .texto-izquierda{
+    font-size: 65px;
+    font-family: Varela Round;
+    color: rgb(0, 179, 186);
+  }
+
+  .texto-derecha{
+    font-size: 17px;
+    line-height: 2;
+  }
+
+  .fixed-size-img {
+    width: 250px;
+    height: 200px;
+  }
+
+  .carousel-custom{
+    width: 500px;
+    margin: auto auto 50px auto;
+  }
+
+  .card-item{
+    width: 500px;
+    max-height: 600px;
+  }
+
+  .image-container {
+    position: relative;
+    width: 80vw;
+    margin: 0 auto; /* Centra el contenedor */
+  }
+
+  .image {
+    margin-top: -1px;
+    height: 32vh;
+    width: 100%; /* La imagen ocupa el 100% del contenedor */
+    display: block; /* Elimina el espacio debajo de la imagen */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  }
+
+}
+
+/* Dispositivos extra pequeños (smartphones) */
+@media (max-width: 576px) {
+
+  .textos-grandes{
+    display: none !important;
+  }
+
+  .textos-pequenios{
+    display: flex !important;
+  }
+
+  .texto-izquierda{
+    font-size: 45px;
+    font-family: Varela Round;
+    color: rgb(0, 179, 186);
+  }
+
+  .texto-derecha{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .fixed-size-img {
+    width: 200px;
+    height: 150px;
+  }
+
+  .carousel-custom{
+    width: 350px;
+    margin: auto auto 50px auto;
+  }
+
+  .card-item{
+    width: 350px;
+    max-height: 600px;
+  }
+
+  .image-container {
+    position: relative;
+    width: 85vw;
+    margin: 0 auto; /* Centra el contenedor */
+  }
+
+  .image {
+    margin-top: -1px;
+    height: 25vh;
+    width: 100%; /* La imagen ocupa el 100% del contenedor */
+    display: block; /* Elimina el espacio debajo de la imagen */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+  }
+
+}

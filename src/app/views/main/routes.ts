@@ -6,9 +6,16 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadComponent: () => import('./dashboard-productos/dashboard-productos.component').then(m => m.DashboardProductosComponent),
+        loadComponent: () => import('./dashboard-main/dashboard-main.component').then(m => m.DashboardMainComponent),
         data: {
           title: 'Dashboard'
+        }
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./dashboard-productos/dashboard-productos.component').then(m => m.DashboardProductosComponent),
+        data: {
+          title: 'Productos'
         }
       },
       {
