@@ -15,6 +15,7 @@ import {CommonModule, NgFor} from '@angular/common';
 import {NavigationExtras, Router, RouterLink} from '@angular/router';
 import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {ProductosFavoritos} from '../../../bo/ProductosFavoritos';
+import {DataUtils} from '../../../utils/DataUtils';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -28,7 +29,8 @@ export class DashboardMainComponent implements OnInit{
 
   listResponse: ProductosFavoritos[];
 
-  constructor(public services: Services, public functionsUtils: FunctionsUtils, private router: Router){
+  constructor(public services: Services, public functionsUtils: FunctionsUtils, private router: Router,
+              public dataUtils: DataUtils){
     this.services.isDashboardUrl = false;
     this.listResponse = [];
   }
