@@ -1,21 +1,21 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
-  <h3 class="mt-4 tittle">{{tipoProducto ? tipoProducto.nombre : 'General'}}</h3>
+  <h3 class="mt-4 tittle">{{tipoProducto ? tipoProducto.nombre : 'Catálogo'}}</h3>
   <c-card class="my-3 ancho-personalizado" *ngIf="listResponse && listResponse.length">
     <c-card-body class="card-container" >
       <c-card class="card-item" *ngFor="let obj of listResponse" >
         <div (click)="viajarADetalle(obj)">
-          <div class="justify-content-center d-flex">
-            <span cCardTitle class="fw-bold m-2 card-title-custom">{{obj.nombre}}</span>
-          </div>
+          <br>
           <div class="justify-content-center d-flex">
             <img cCardImg="top" [src]="obj.imagen" style="border-radius: 3px;" class="fixed-size-img" />
           </div>
-          <c-card-body class="card-body-custom text-center">
-            <p cCardText>
+          <c-card-body class="card-body-custom">
+            <p >
               {{obj.descripcion}}
             </p>
           </c-card-body>
-          <br>
+          <div class="justify-content-center d-flex" style="margin-top: -20px;">
+            <span cCardTitle class="fw-bold m-2 card-title-custom">{{obj.nombre}}</span>
+          </div>
           <div class="justify-content-center d-flex" style="padding-bottom: 20px;">
             <button  cButton color="primary">Q{{functionsUtils.formatPrice(obj.precio)}}</button>
           </div>

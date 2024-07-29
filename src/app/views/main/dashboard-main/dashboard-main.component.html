@@ -25,8 +25,11 @@
 
 
 <br>
-<div class="carousel-custom d-flex justify-content-center mt-lg-4" *ngIf="listResponse && listResponse.length > 0">
-  <c-carousel dark="true"  [interval]="0">
+<div class="carousel-custom d-flex justify-content-center mt-lg-4 row" *ngIf="listResponse && listResponse.length > 0"  @fadeInOut>
+  <div class="justify-content-center d-flex mb-2 text-white w-50 p-2" style="background-color: rgb(0, 179, 186);">
+    <h3>Comprar</h3>
+  </div>
+  <c-carousel dark="false"  [interval]="0">
     <c-carousel-indicators></c-carousel-indicators>
     <c-carousel-inner>
       <c-carousel-item *ngFor="let obj of listResponse">

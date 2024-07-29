@@ -16,6 +16,7 @@ import {NavigationExtras, Router, RouterLink} from '@angular/router';
 import {FunctionsUtils} from '../../../utils/FunctionsUtils';
 import {ProductosFavoritos} from '../../../bo/ProductosFavoritos';
 import {DataUtils} from '../../../utils/DataUtils';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard-main',
@@ -23,7 +24,18 @@ import {DataUtils} from '../../../utils/DataUtils';
   imports: [ThemeDirective, NgFor, RouterLink, CarouselComponent, CarouselIndicatorsComponent, CarouselInnerComponent, CarouselItemComponent,
   CarouselControlComponent, CardBodyComponent, CardComponent, CommonModule, ButtonModule],
   templateUrl: './dashboard-main.component.html',
-  styleUrl: './dashboard-main.component.scss'
+  styleUrl: './dashboard-main.component.scss',
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [ // void => *
+        animate('0.3s ease-in-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [ // * => void
+        animate('0.3s ease-in-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class DashboardMainComponent implements OnInit{
 

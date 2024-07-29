@@ -1,3 +1,29 @@
+.carousel-control-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; /* Ajusta el tamaño según sea necesario */
+  height: 40px; /* Ajusta el tamaño según sea necesario */
+  background-color: rgb(0, 179, 186); /* Color inicial */
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.carousel-control-custom[direction="prev"] {
+  left: 15px; /* Ajusta la posición según sea necesario */
+}
+
+.carousel-control-custom[direction="next"] {
+  right: 15px; /* Ajusta la posición según sea necesario */
+}
+
+.carousel-control-custom:hover {
+  opacity: 0.7; /* Ajusta la opacidad al hacer hover */
+}
+
+::ng-deep .carousel-indicators [data-coreui-target] {
+  background-color: rgb(0, 179, 186); /* Cambia a tu color deseado */
+}
+
 button ::ng-deep {
   background-color: rgb(0, 179, 186) !important;
   border-color: rgb(0, 179, 186) !important;
@@ -41,6 +67,7 @@ button ::ng-deep {
 }
 
 .card-item{
+  cursor: pointer;
   border-color: rgba(0, 0, 0, 0.1);
   background: white;
   color: rgb(0, 179, 186);
