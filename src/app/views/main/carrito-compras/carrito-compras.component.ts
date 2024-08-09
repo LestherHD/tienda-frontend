@@ -165,11 +165,24 @@ export class CarritoComprasComponent implements OnInit{
     });
   }
 
-  eliminar(productId: number): void {
-    if (this.mapaProductos[productId]) {
-      delete this.mapaProductos[productId];
+  eliminar(item: any): void {
+    const valor = item.producto.id + JSON.stringify(item.caracteristicas);
+    if (this.mapaProductos[valor]) {
+      delete this.mapaProductos[valor];
       this.guardarMapaEnLocalStorage();
     }
+  }
+
+  ordenarPorLlave(obj: { [key: string]: string }): { [key: string]: string } {
+    const clavesOrdenadas = Object.keys(obj).sort(); // Ordena las llaves alfabéticamente
+    const nuevoObj: { [key: string]: string } = {}; // Crea un nuevo objeto
+
+    // Llena el nuevo objeto con las claves ordenadas
+    clavesOrdenadas.forEach(key => {
+      nuevoObj[key] = obj[key];
+    });
+
+    return nuevoObj; // Retorna el objeto ordenado
   }
 
   guardarMapaEnLocalStorage(): void {
@@ -204,6 +217,7 @@ export class CarritoComprasComponent implements OnInit{
           }
 
           const detalle = new DetallePedido(null, null, descripcionFinal, cantidad, producto.precio, producto);
+          detalle.caracteristicas = caracteristicas;
           this.listResponse.push(detalle);
           this.totalCompra += Number((cantidad * producto.precio));
         }

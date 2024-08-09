@@ -27,7 +27,7 @@
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio)}}</td>
               <td class="align-center">Q{{functionsUtils.formatPrice(item.producto.precio * item.cantidad)}}</td>
               <td class="align-center">
-                <button cButton color="danger" variant="outline" size="sm" (click)="eliminar(item.producto.id)">
+                <button cButton color="danger" variant="outline" size="sm" (click)="eliminar(item)">
                   <svg cIcon name="cilTrash"></svg>
                 </button>
               </td>

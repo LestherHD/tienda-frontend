@@ -8,7 +8,7 @@ export class DetallePedido {
   cantidad: number;
   precio: number;
   producto: Productos;
-
+  caracteristicas: string;
 
   constructor(id: number, pedido: Pedidos, descripcion: string,
               cantidad: number, precio: number, producto: Productos) {
