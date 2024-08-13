@@ -208,7 +208,7 @@ export class CarritoComprasComponent implements OnInit{
 
           var descripcionFinal = descripcion;
 
-          if (caracteristicas){
+          if (caracteristicas && Object.keys(caracteristicas).length > 0){
             descripcionFinal += '<br><span class="fw-bold"> Características:</span> ';
             Object.entries(caracteristicas).forEach(([clave, valor]) => {
               descripcionFinal += ' <br><span class="fw-semibold">' + clave + ': </span>'+valor + ',';
@@ -227,7 +227,7 @@ export class CarritoComprasComponent implements OnInit{
 
   filtrarLista(){
     this.form.controls.sucursal.setValue(null);
-    this.listaSucursalesFiltrada = this.listaSucursales.filter(x => x.departamento === this.form.controls.departamento.value)
+    this.listaSucursalesFiltrada = this.listaSucursales.filter(x => x.departamento === this.form.controls.departamento.value);
     if (this.listaSucursalesFiltrada && this.listaSucursalesFiltrada.length > 0){
       this.form.controls.sucursal.setValue(this.listaSucursalesFiltrada[0].id);
     }
