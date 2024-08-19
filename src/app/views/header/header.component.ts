@@ -75,9 +75,12 @@ export class HeaderComponent implements OnInit{
     this.valorBusqueda.setValue('')
     this.valorBusquedaBK = new FormControl(this.valorBusqueda.value, Validators.required);
     if (this.services.isDashboardUrl){
+      this.services.setSearchValue(null);
       this.services.setProductSearchValue(tipoProducto);
     } else {
+      console.log('entra a clic');
       this.viajarInicio();
+      this.services.setSearchValue(null);
       this.services.setProductSearchValue(tipoProducto);
     }
   }
