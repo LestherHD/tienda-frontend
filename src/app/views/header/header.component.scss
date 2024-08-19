@@ -34,6 +34,10 @@
   min-height: 130px;
 }
 
+.ancho-personalizado-busqueda button{
+  font-size: medium;
+}
+
 .logo {
   margin-left: 2vw;
   margin-top: 50px;
@@ -461,6 +465,11 @@
     max-height: 21vh;
   }
 
+  .ancho-personalizado-busqueda button{
+    font-size: small;
+  }
+
+
   .logo {
     align-items: center;
     text-align: center;
@@ -478,7 +487,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
-    margin-right: 0vw;
+    margin-left: 5vw;
     margin-top: 5px;
   }
 
@@ -493,7 +502,7 @@
   }
 
   .shopping-cart {
-    margin-top: 0px;
+    margin-top: -5px;
     margin-left: -15px;
     height: 5vh;
     width: auto;

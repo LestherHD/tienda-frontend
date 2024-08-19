@@ -94,6 +94,10 @@ export class HeaderComponent implements OnInit{
     this.functionsUtils.navigateOptionUrl(this.router, 'dashboard');
   }
 
+  viajarConozcamonos() {
+    this.functionsUtils.navigateOptionUrl(this.router, 'knoweachother');
+  }
+
   cargarMapaDesdeLocalStorage(): void {
     const data = localStorage.getItem('mapaProductos');
     if (data) {

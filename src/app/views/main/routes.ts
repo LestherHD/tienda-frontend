@@ -31,6 +31,13 @@ export const routes: Routes = [
         data: {
           title: 'Carrito de compras'
         }
+      },
+      {
+        path: 'knoweachother',
+        loadComponent: () => import('./conozcamonos/conozcamonos.component').then(m => m.ConozcamonosComponent),
+        data: {
+          title: 'Conozcámonos'
+        }
       }
     ]
   }

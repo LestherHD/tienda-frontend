@@ -23,6 +23,10 @@
             </ul>
           </c-dropdown>
         </div>
+        <div class="button-container" (click)="setActive('conozcamonoz')">
+          <button class="border-0 text-white btn" (click)="viajarConozcamonos()">Conozcámonos</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'conozcamonoz'"></div>
+        </div>
       </div>
       <div class="input-group input-group-custom">
         <input class="form-control input-personalizado" placeholder="Buscar..." [formControl]="valorBusqueda"
@@ -67,6 +71,10 @@
               </li>
             </ul>
           </c-dropdown>
+        </div>
+        <div class="button-container" (click)="setActive('conozcamonoz')">
+          <button class="border-0 text-white btn" (click)="viajarConozcamonos()">Conozcámonos</button>
+          <div class="underline text-white" *ngIf="services.activeButtonHeader === 'conozcamonoz'"></div>
         </div>
         <div class="shopping-cart button-container">
           <button (click)="viajarACarrito()" color="dark" class="text-white border-0 position-relative mx-2 btn">

@@ -1,0 +1,80 @@
+
+
+@media (max-width: 767px) {
+
+  .principal-grande{
+    margin: 0 auto;
+    display: none;
+  }
+
+  .principal-pequenio{
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  .footer-custom {
+    font-family: Varela Round;
+    font-size: clamp(13px, 10vw, 16px);
+    color: rgb(0, 179, 186, 0.4);
+    text-align: justify;
+  }
+
+  .image {
+    width: 100vw;
+    height: 60vw;
+  }
+
+  .title{
+    font-size: 5vw;
+    font-family: Varela Round;
+    color: rgb(0, 179, 186);
+  }
+
+  .description{
+    font-size: clamp(13px, 5vw, 16px);
+    font-family: Varela Round;
+    color: rgb(76, 201, 206);
+  }
+
+
+}
+
+@media (min-width: 768px) {
+
+  .principal-grande{
+    margin: 0 auto;
+    display: block;
+  }
+
+  .principal-pequenio{
+    display: none;
+  }
+
+  .footer-custom {
+    font-family: Varela Round;
+    font-size: clamp(13px, 10vw, 16px);
+    color: rgb(0, 179, 186, 0.4);
+    text-align: justify;
+  }
+
+  .image {
+    width: 23vw;
+    height: 20vw;
+  }
+
+  .title{
+    font-size: 3.3vw;
+    font-family: Varela Round;
+    color: rgb(0, 179, 186);
+  }
+
+  .description{
+    font-size: clamp(13px, 5vw, 16px);
+    font-family: Varela Round;
+    color: rgb(76, 201, 206);
+  }
+
+
+
+}
