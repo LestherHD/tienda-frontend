@@ -4,6 +4,7 @@ export class Caracteristicas {
   seleccionado: boolean;
   visible: boolean;
   listaValores: string[];
+  precio: number;
 
   constructor(id: number, nombre: string){
     this.id = id;

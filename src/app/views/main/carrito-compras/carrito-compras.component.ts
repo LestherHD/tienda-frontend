@@ -211,7 +211,7 @@ export class CarritoComprasComponent implements OnInit{
           if (caracteristicas && Object.keys(caracteristicas).length > 0){
             descripcionFinal += '<br><span class="fw-bold"> Características:</span> ';
             Object.entries(caracteristicas).forEach(([clave, valor]) => {
-              descripcionFinal += ' <br><span class="fw-semibold">' + clave + ': </span>'+valor + ',';
+              descripcionFinal += ' <br><span class="fw-semibold">' + clave + ': </span>'+(valor ? valor : 'N/A') +',';
             });
             descripcionFinal = descripcionFinal.substring(0, descripcionFinal.length - 1);
           }

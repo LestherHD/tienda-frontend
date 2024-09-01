@@ -26,12 +26,14 @@ import {Title} from '@angular/platform-browser';
 export class DetalleProductoComponent implements OnInit{
 
   producto: Productos;
+  precioBase: number;
   idProduct: any;
   listaCaracteristicas: Caracteristicas[];
   agregado: boolean;
   mapaProductos: Record<string, DetalleProducto> = {};
   cantidad: FormControl;
   caracteristicasSeleccionadas: { [nombre: string]: any } = {};
+  preciosSeleccionados: { [nombre: string]: any } = {};
   filteredCaracteristicas: Caracteristicas[] = [];
 
   constructor(public service: Services, public functionUtils: FunctionsUtils,
@@ -66,6 +68,7 @@ export class DetalleProductoComponent implements OnInit{
 
     this.service.getFromEntityAndMethod('productos', 'getById', requestDTO).subscribe((res: Productos) =>{
       this.producto = res;
+      this.precioBase = this.producto.precio;
       this.filteredCaracteristicas = this.filtrarCaracteristicasAsociadas();
       this.titleService.setTitle('Holandesa - ' + this.producto.nombre);
       this.producto.imagen = 'data:image/jpeg;base64,'+this.producto.imagen;
@@ -82,7 +85,7 @@ export class DetalleProductoComponent implements OnInit{
 
 
     if (obj){
-      this.onSeleccionarValorCaracteristica(caracteristica.nombre, null, obj[0]);
+      this.onSeleccionarValorCaracteristica(this.producto, caracteristica, null, null);
     }
     return obj;
   }
@@ -128,12 +131,31 @@ export class DetalleProductoComponent implements OnInit{
     }
   }
 
-  onSeleccionarValorCaracteristica(nombre: string, event: any, valor: string) {
+  onSeleccionarValorCaracteristica(producto: Productos, caracteristicas: Caracteristicas, event: any, valor: string) {
 
+    let caracteristicaSeleccionada = null;
     if (event == null){
-      this.caracteristicasSeleccionadas[nombre] = valor;
+      caracteristicaSeleccionada = producto.caracteristicas.find(x => x.valor === valor);
+      caracteristicas.precio = caracteristicaSeleccionada && caracteristicaSeleccionada.precio ? caracteristicaSeleccionada.precio : 0;
+      this.caracteristicasSeleccionadas[caracteristicas.nombre] = valor;
+      this.preciosSeleccionados[caracteristicas.nombre] = caracteristicas ? caracteristicas.precio : 0;
     } else {
-      this.caracteristicasSeleccionadas[nombre] = event.target.value;
+      caracteristicaSeleccionada = producto.caracteristicas.find(x => x.valor === event.target.value);
+      caracteristicas.precio = caracteristicaSeleccionada && caracteristicaSeleccionada.precio ? caracteristicaSeleccionada.precio : 0;
+      this.caracteristicasSeleccionadas[caracteristicas.nombre] = event.target.value;
+      this.preciosSeleccionados[caracteristicas.nombre] = caracteristicas ? caracteristicas.precio : 0;
+    }
+
+    this.producto.precio = this.precioBase;
+
+    for (const nombre in this.preciosSeleccionados) {
+      if (this.preciosSeleccionados.hasOwnProperty(nombre)) {
+        const valor = this.preciosSeleccionados[nombre];
+        console.log(`Producto: ${nombre}, Precio: ${valor}`);
+
+        this.producto.precio += valor;
+
+      }
     }
   }
 

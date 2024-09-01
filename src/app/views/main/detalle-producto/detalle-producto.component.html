@@ -15,7 +15,7 @@
             </p>
             <div class="col-auto mt-3">
               <label class="card-description-custom fw-semibold m-1" >Cantidad: </label>
-              <div >
+              <div class="col-8" >
                 <select class="form-select m-1" [formControl]="cantidad">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -32,12 +32,16 @@
             </div>
             <div *ngIf="producto && producto.caracteristicas && producto.caracteristicas.length > 0">
               <div *ngFor="let obj of filteredCaracteristicas">
-                <div class="col-auto mt-3">
+                <div class="col-12 mt-3 row">
                   <label class="card-description-custom fw-semibold m-1">{{obj.nombre}}: </label>
-                  <div class="col-md-auto">
-                    <select class="form-select m-1" (change)="onSeleccionarValorCaracteristica(obj.nombre, $event, null)">
+                  <div class="col-9">
+                    <select class="form-select m-1" (change)="onSeleccionarValorCaracteristica(producto, obj, $event, null)">
+                      <option value="null">--Seleccionar--</option>
                       <option value="{{valor}}" *ngFor="let valor of obj.listaValores">{{valor}}</option>
                     </select>
+                  </div>
+                  <div class="col-3">
+                    <span>Q{{functionUtils.formatPrice(obj.precio)}}</span>
                   </div>
                 </div>
               </div>
