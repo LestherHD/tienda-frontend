@@ -11,9 +11,8 @@ import {TipoProducto} from '../bo/TipoProducto';
 export class Services {
 
   // local
-  // URL = 'http://localhost:8082';
-  URL = '/api';
-  // URL = 'http://192.168.1.6:8082';
+  URL = 'http://localhost:8082/api';
+  //URL = '/api';
   // URL = 'https://tienda-vir-backend-42bcf420544c.herokuapp.com';
 
   public eventEmitter: EventEmitter<void> = new EventEmitter();
